@@ -123,7 +123,11 @@
             backdrop-filter: blur(10px);
             z-index: 100;
             border-bottom: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
         }
+
+
 
         .logo {
             font-size: 2rem;
@@ -210,7 +214,11 @@
             flex-direction: column;
             gap: 20px;
             z-index: 150;
+            position: relative;
+            overflow: hidden;
         }
+
+
 
         .mobile-nav .nav-link {
             display: block;
@@ -369,6 +377,38 @@
             left: 100%;
         }
 
+        /* Universal card shimmer effect */
+        .video-card::before,
+        .blog-card::before,
+        .social-card::before,
+        .cta-section::before,
+        .terminal::before,
+        .mobile-nav::before,
+        header::before,
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.5s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .video-card:hover::before,
+        .blog-card:hover::before,
+        .social-card:hover::before,
+        .cta-section:hover::before,
+        .terminal:hover::before,
+        .mobile-nav:hover::before,
+        header:hover::before,
+        footer:hover::before {
+            left: 100%;
+        }
+
         .features-list li:hover {
             transform: translateY(-5px);
             box-shadow: 0 0 20px var(--glow-color);
@@ -396,7 +436,10 @@
             backdrop-filter: blur(5px);
             overflow: hidden;
             font-family: 'Courier New', Courier, monospace;
+            position: relative;
         }
+
+
 
         .terminal-header {
             background: #1a2e1a;
@@ -715,6 +758,8 @@
             border-radius: 20px;
             padding: 60px 40px;
             margin-top: 80px;
+            position: relative;
+            overflow: hidden;
         }
 
         .cta-section h2 {
@@ -752,6 +797,8 @@
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
         }
 
         .social-card:hover {
@@ -917,7 +964,11 @@
             padding: 40px 20px;
             text-align: center;
             margin-top: 80px;
+            position: relative;
+            overflow: hidden;
         }
+
+
 
         .social-links {
             display: flex;
