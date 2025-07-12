@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+
+{% block title %}Social Links - Anipreneur{% endblock %}
+
+{% block extra_styles %}
+/* SOCIAL LINKS SECTION */
+.social-links-section {
+padding: 80px 0;
+}
+
+.social-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 30px;
+max-width: 1000px;
+margin: 0 auto;
+}
+
+.social-card {
+background: var(--card-bg);
+border: 1px solid var(--border-color);
+border-radius: 15px;
+padding: 30px;
+text-align: center;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+backdrop-filter: blur(10px);
+}
+
+.social-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 20px 40px rgba(0, 191, 255, 0.3);
+}
+
+.social-card i {
+font-size: 3rem;
+margin-bottom: 20px;
+display: block;
+}
+
+.social-card h3 {
+font-size: 1.5rem;
+margin-bottom: 15px;
+color: var(--text-color);
+}
+
+.social-card p {
+color: var(--text-secondary);
+margin-bottom: 25px;
+line-height: 1.6;
+}
+
+.social-card .btn {
+width: 100%;
+max-width: 200px;
+margin: 0 auto;
+}
+
+/* TikTok */
+.social-card.tiktok i {
+color: #ff0050;
+}
+
+/* Instagram */
+.social-card.instagram i {
+background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+/* Telegram */
+.social-card.telegram i {
+color: #0088cc;
+}
+
+/* YouTube */
+.social-card.youtube i {
+color: #ff0000;
+}
+
+/* Twitter */
+.social-card.twitter i {
+color: #1da1f2;
+}
+
+/* LinkedIn */
+.social-card.linkedin i {
+color: #0077b5;
+}
+
+/* GitHub */
+.social-card.github i {
+color: #333;
+}
+
+/* Discord */
+.social-card.discord i {
+color: #7289da;
+}
+
+@media (max-width: 768px) {
+.social-grid {
+grid-template-columns: 1fr;
+gap: 20px;
+}
+}
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content" data-aos="fade-up">
+        <h1>Connect With <span>Anipreneur</span></h1>
+        <p>Follow me across all platforms for daily anime insights, life lessons, and entrepreneurial wisdom. Join our
+            community of anime enthusiasts and aspiring entrepreneurs!</p>
+    </div>
+</section>
+
+<!-- Social Links Section -->
+<section class="social-links-section">
+    <div class="container">
+        <h2 data-aos="fade-up">My <span>Social</span> Links</h2>
+        <div class="social-grid">
+            <!-- TikTok -->
+            <div class="social-card tiktok" data-aos="fade-up" data-aos-delay="100">
+                <i class="fab fa-tiktok"></i>
+                <h3>TikTok</h3>
+                <p>Short-form anime content, life tips, and entrepreneurial insights. Follow for daily motivation!</p>
+                <a href="https://www.tiktok.com/@anipreneur" target="_blank" class="btn">Follow on TikTok</a>
+            </div>
+
+            <!-- Instagram -->
+            <div class="social-card instagram" data-aos="fade-up" data-aos-delay="200">
+                <i class="fab fa-instagram"></i>
+                <h3>Instagram</h3>
+                <p>Visual storytelling, behind-the-scenes content, and daily inspiration from anime and business.</p>
+                <a href="https://www.instagram.com/theanipreneur" target="_blank" class="btn">Follow on Instagram</a>
+            </div>
+
+            <!-- Telegram Channel -->
+            <div class="social-card telegram" data-aos="fade-up" data-aos-delay="300">
+                <i class="fab fa-telegram"></i>
+                <h3>Telegram Channel</h3>
+                <p>Exclusive content, deep dives into anime philosophy, and entrepreneurial strategies. Join our
+                    community!</p>
+                <a href="https://t.me/anipreneurhq" target="_blank" class="btn">Join Channel</a>
+            </div>
+
+            <!-- Telegram Personal -->
+            <div class="social-card telegram" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-user"></i>
+                <h3>Telegram Personal</h3>
+                <p>Direct communication for business inquiries, collaborations, and personalized mentorship.</p>
+                <a href="https://t.me/anipreneur" target="_blank" class="btn">Message Me</a>
+            </div>
+
+            <!-- YouTube -->
+            <div class="social-card youtube" data-aos="fade-up" data-aos-delay="500">
+                <i class="fab fa-youtube"></i>
+                <h3>YouTube</h3>
+                <p>In-depth anime analysis, life lessons, and entrepreneurial content. Subscribe for weekly insights!
+                </p>
+                <a href="https://www.youtube.com/@Anipreneur" target="_blank" class="btn">Subscribe</a>
+            </div>
+
+            <!-- Twitter -->
+            <div class="social-card twitter" data-aos="fade-up" data-aos-delay="600">
+                <i class="fab fa-twitter"></i>
+                <h3>Twitter</h3>
+                <p>Real-time thoughts, anime quotes, and entrepreneurial wisdom. Follow for daily inspiration!</p>
+                <a href="https://twitter.com/theanipreneur" target="_blank" class="btn">Follow on Twitter</a>
+            </div>
+
+            <!-- WhatsApp -->
+            <div class="social-card whatsapp" data-aos="fade-up" data-aos-delay="700">
+                <i class="fab fa-whatsapp"></i>
+                <h3>WhatsApp</h3>
+                <p>Direct messaging for business inquiries, collaborations, and personalized mentorship.</p>
+                <a href="https://wa.me/251998095425" target="_blank" class="btn">Message Me</a>
+            </div>
+
+            <!-- Discord -->
+            <div class="social-card discord" data-aos="fade-up" data-aos-delay="800">
+                <i class="fab fa-discord"></i>
+                <h3>Discord</h3>
+                <p>Join our community server for discussions, events, and exclusive content with fellow anime
+                    enthusiasts.</p>
+                <a href="https://discord.gg/zRPqUBHK" target="_blank" class="btn">Join Server</a>
+            </div>
+
+            <!-- GitHub -->
+            <div class="social-card github" data-aos="fade-up" data-aos-delay="900">
+                <i class="fab fa-github"></i>
+                <h3>GitHub</h3>
+                <p>Open-source projects, coding tutorials, and tech insights for developers and entrepreneurs.</p>
+                <a href="https://github.com/anipreneur" target="_blank" class="btn">Follow</a>
+            </div>
+
+            <!-- Email -->
+            <div class="social-card email" data-aos="fade-up" data-aos-delay="1000">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>Professional business inquiries, partnerships, and detailed project discussions.</p>
+                <a href="mailto:me@anipreneur.com" class="btn">Send Email</a>
+            </div>
+
+            <!-- LinkedIn -->
+            <div class="social-card linkedin" data-aos="fade-up" data-aos-delay="1100">
+                <i class="fab fa-linkedin"></i>
+                <h3>LinkedIn</h3>
+                <p>Professional networking, business insights, and industry connections in the anime and tech world.</p>
+                <a href="https://linkedin.com/in/anipreneur" target="_blank" class="btn">Connect</a>
+            </div>
+
+            <!-- Website -->
+            <div class="social-card website" data-aos="fade-up" data-aos-delay="1200">
+                <i class="fas fa-globe"></i>
+                <h3>Website</h3>
+                <p>Visit my main website for the latest content, blog posts, and comprehensive anime insights.</p>
+                <a href="https://anipreneur.com" target="_blank" class="btn">Visit Site</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
