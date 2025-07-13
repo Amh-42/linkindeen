@@ -13,42 +13,44 @@
     </div>
 
     {% if posts %}
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Slug</th>
-                <th>Status</th>
-                <th>Author</th>
-                <th>Created</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for post in posts %}
-            <tr>
-                <td>{{ post.title | safe }}</td>
-                <td><code>{{ post.slug }}</code></td>
-                <td>
-                    <span class="status-badge status-{{ post.status }}">
-                        {{ post.status.title() }}
-                    </span>
-                </td>
-                <td>{{ post.author.username }}</td>
-                <td>{{ post.created_at.strftime('%Y-%m-%d') }}</td>
-                <td>
-                    <a href="{{ url_for('admin_edit_post', id=post.id) }}" class="btn"
-                        style="padding: 5px 10px; font-size: 0.8rem; margin-right: 5px;">Edit</a>
-                    <form method="POST" action="{{ url_for('admin_delete_post', id=post.id) }}"
-                        style="display: inline;">
-                        <button type="submit" class="btn btn-danger" style="padding: 5px 10px; font-size: 0.8rem;"
-                            onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="table-container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Slug</th>
+                    <th>Status</th>
+                    <th>Author</th>
+                    <th>Created</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in posts %}
+                <tr>
+                    <td>{{ post.title | safe }}</td>
+                    <td><code>{{ post.slug }}</code></td>
+                    <td>
+                        <span class="status-badge status-{{ post.status }}">
+                            {{ post.status.title() }}
+                        </span>
+                    </td>
+                    <td>{{ post.author.username }}</td>
+                    <td>{{ post.created_at.strftime('%Y-%m-%d') }}</td>
+                    <td>
+                        <a href="{{ url_for('admin_edit_post', id=post.id) }}" class="btn"
+                            style="padding: 5px 10px; font-size: 0.8rem; margin-right: 5px;">Edit</a>
+                        <form method="POST" action="{{ url_for('admin_delete_post', id=post.id) }}"
+                            style="display: inline;">
+                            <button type="submit" class="btn btn-danger" style="padding: 5px 10px; font-size: 0.8rem;"
+                                onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
     {% else %}
     <p style="color: var(--text-secondary); text-align: center; padding: 20px;">No posts yet. <a
             href="{{ url_for('admin_new_post') }}" style="color: var(--primary-color);">Create your first post</a></p>

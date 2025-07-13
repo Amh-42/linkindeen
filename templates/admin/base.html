@@ -46,6 +46,43 @@
             background: var(--card-bg);
             border-right: 1px solid var(--border-color);
             padding: 20px 0;
+            transition: transform 0.3s ease;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 200;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--text-color);
+            margin: 3px 0;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
         }
 
         .sidebar-header {
@@ -105,6 +142,32 @@
         .main-content {
             flex: 1;
             padding: 20px;
+            position: relative;
+        }
+
+        .mobile-header {
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+        }
+
+        .mobile-header h2 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mobile-logo {
+            height: 30px;
+            width: auto;
+            border-radius: 6px;
         }
 
         .header {
@@ -154,6 +217,13 @@
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            border-radius: 8px;
+            margin-top: 20px;
         }
 
         .card-header {
@@ -172,6 +242,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            table-layout: fixed;
         }
 
         .table th,
@@ -179,16 +250,68 @@
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid var(--border-color);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 0;
         }
 
         .table th {
-            background: rgba(0, 191, 255, 0.1);
+            background: rgba(45, 90, 45, 0.1);
             color: var(--secondary-color);
             font-weight: 600;
         }
 
         .table tr:hover {
-            background: rgba(255, 140, 0, 0.1);
+            background: rgba(45, 90, 45, 0.1);
+        }
+
+        /* Specific column widths for better layout */
+        .table th:nth-child(1),
+        .table td:nth-child(1) {
+            width: 25%;
+        }
+
+        .table th:nth-child(2),
+        .table td:nth-child(2) {
+            width: 20%;
+        }
+
+        .table th:nth-child(3),
+        .table td:nth-child(3) {
+            width: 15%;
+        }
+
+        .table th:nth-child(4),
+        .table td:nth-child(4) {
+            width: 15%;
+        }
+
+        .table th:nth-child(5),
+        .table td:nth-child(5) {
+            width: 15%;
+        }
+
+        .table th:nth-child(6),
+        .table td:nth-child(6) {
+            width: 10%;
+        }
+
+        /* Handle long text with ellipsis */
+        .table td {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Show full text on hover for important columns */
+        .table td:hover {
+            white-space: normal;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            position: relative;
+            z-index: 10;
+            background: var(--card-bg);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         .form-group {
@@ -285,12 +408,131 @@
             color: var(--text-secondary);
             font-size: 0.9rem;
         }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .admin-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: -250px;
+                height: 100vh;
+                z-index: 1000;
+                transform: translateX(0);
+            }
+
+            .sidebar.active {
+                transform: translateX(250px);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-header {
+                display: flex;
+            }
+
+            .main-content {
+                padding: 10px;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+
+            .user-info {
+                align-self: flex-end;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .table {
+                font-size: 0.9rem;
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            .table th,
+            .table td {
+                padding: 8px;
+                min-width: 120px;
+            }
+
+            /* Reset column widths for mobile */
+            .table th:nth-child(1),
+            .table td:nth-child(1),
+            .table th:nth-child(2),
+            .table td:nth-child(2),
+            .table th:nth-child(3),
+            .table td:nth-child(3),
+            .table th:nth-child(4),
+            .table td:nth-child(4),
+            .table th:nth-child(5),
+            .table td:nth-child(5),
+            .table th:nth-child(6),
+            .table td:nth-child(6) {
+                width: auto;
+            }
+
+            /* Allow text wrapping on mobile */
+            .table td {
+                white-space: normal;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 5px;
+            }
+
+            .card {
+                padding: 15px;
+            }
+
+            .mobile-header {
+                padding: 10px;
+            }
+
+            .mobile-logo {
+                height: 25px;
+            }
+
+            .mobile-header h2 {
+                font-size: 1rem;
+            }
+
+            .table {
+                font-size: 0.8rem;
+            }
+
+            .table th,
+            .table td {
+                padding: 6px;
+                min-width: 100px;
+            }
+
+            .btn {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="admin-container">
-        <div class="sidebar">
+        <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <img src="{{ url_for('static', filename='images/logo.png') }}" alt="LinkInDeen Logo"
                     class="sidebar-logo">
@@ -324,6 +566,19 @@
         </div>
 
         <div class="main-content">
+            <div class="mobile-header">
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <h2>
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="LinkInDeen Logo"
+                        class="mobile-logo">
+                    <i class="fas fa-crown"></i> LinkInDeen
+                </h2>
+            </div>
+
             <div class="header">
                 <h1>{% block page_title %}Dashboard{% endblock %}</h1>
                 <div class="user-info">
@@ -344,6 +599,47 @@
             {% block content %}{% endblock %}
         </div>
     </div>
+
+    <script>
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const sidebar = document.getElementById('sidebar');
+        const mobileHeader = document.querySelector('.mobile-header');
+
+        hamburger.addEventListener('click', function () {
+            hamburger.classList.toggle('active');
+            sidebar.classList.toggle('active');
+        });
+
+        // Close sidebar when clicking on a menu item (mobile)
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                if (window.innerWidth <= 768) {
+                    hamburger.classList.remove('active');
+                    sidebar.classList.remove('active');
+                }
+            });
+        });
+
+        // Close sidebar when clicking outside (mobile)
+        document.addEventListener('click', function (e) {
+            if (window.innerWidth <= 768) {
+                if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) {
+                hamburger.classList.remove('active');
+                sidebar.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 
 </html>
