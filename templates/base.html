@@ -130,13 +130,33 @@
 
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
             font-size: 2rem;
             font-weight: 700;
             color: var(--text-color);
-            text-decoration: none;
         }
 
-        .logo span {
+        .logo-img {
+            height: 40px;
+            width: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover .logo-img {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            background: linear-gradient(45deg, var(--islamic-gold), var(--islamic-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-text span {
             background: linear-gradient(45deg, var(--islamic-gold), var(--islamic-green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -900,6 +920,14 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .logo-img {
+                height: 32px;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
             .main-nav {
                 display: none;
             }
@@ -941,6 +969,14 @@
         }
 
         @media (max-width: 480px) {
+            .logo-img {
+                height: 28px;
+            }
+
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
             .hero-content h1 {
                 font-size: 2rem;
             }
@@ -1063,7 +1099,10 @@
 
     <!-- Header -->
     <header>
-        <a href="{{ url_for('index') }}" class="logo">LinkIn<span>Deen</span></a>
+        <a href="{{ url_for('index') }}" class="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="LinkInDeen Logo" class="logo-img">
+            <span class="logo-text">LinkIn<span>Deen</span></span>
+        </a>
         <nav class="main-nav">
             <a href="{{ url_for('blog') }}" class="nav-link">Blog</a>
             <a href="{{ url_for('courses') }}" class="nav-link">Courses</a>
