@@ -298,6 +298,11 @@
             overflow: hidden;
         }
 
+        .btn {
+            position: relative;
+            overflow: hidden;
+        }
+
         .btn::before {
             content: '';
             position: absolute;
@@ -307,6 +312,7 @@
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.5s ease;
+            pointer-events: none;
         }
 
         .btn:hover::before {
@@ -382,6 +388,11 @@
             overflow: hidden;
         }
 
+        .features-list li {
+            position: relative;
+            overflow: hidden;
+        }
+
         .features-list li::before {
             content: '';
             position: absolute;
@@ -391,21 +402,26 @@
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
             transition: left 0.5s ease;
+            pointer-events: none;
         }
 
         .features-list li:hover::before {
             left: 100%;
         }
 
-        /* Universal card shimmer effect */
+        /* Card shimmer effects - rebuilt from ground up */
+        .video-card,
+        .blog-card,
+        .social-card,
+        .cta-section {
+            position: relative;
+            overflow: hidden;
+        }
+
         .video-card::before,
         .blog-card::before,
         .social-card::before,
-        .cta-section::before,
-        .terminal::before,
-        .mobile-nav::before,
-        header::before,
-        footer::before {
+        .cta-section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -414,18 +430,14 @@
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
             transition: left 0.5s ease;
-            z-index: 1;
             pointer-events: none;
+            z-index: 1;
         }
 
         .video-card:hover::before,
         .blog-card:hover::before,
         .social-card:hover::before,
-        .cta-section:hover::before,
-        .terminal:hover::before,
-        .mobile-nav:hover::before,
-        header:hover::before,
-        footer:hover::before {
+        .cta-section:hover::before {
             left: 100%;
         }
 
@@ -655,21 +667,7 @@
             position: relative;
         }
 
-        .video-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.05) 50%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
 
-        .video-card:hover::after {
-            opacity: 1;
-        }
 
         .video-card:hover {
             transform: translateY(-10px);
@@ -724,23 +722,7 @@
             position: relative;
         }
 
-        .blog-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.05) 50%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: 15px;
-            pointer-events: none;
-        }
 
-        .blog-card:hover::after {
-            opacity: 1;
-        }
 
         .blog-card:hover {
             transform: translateY(-5px);
