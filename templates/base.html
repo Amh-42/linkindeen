@@ -200,57 +200,116 @@
             color: #000 !important;
         }
 
+        /* --- Hamburger & Mobile Nav Rebuild --- */
         .hamburger {
             display: none;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
+            background: none;
+            border: none;
             cursor: pointer;
-            z-index: 200;
+            z-index: 2001;
+            position: relative;
+            transition: background 0.2s;
         }
 
-        .hamburger span {
+        .hamburger:focus {
+            outline: 2px solid var(--islamic-gold);
+        }
+
+        .hamburger .bar {
             display: block;
             width: 28px;
             height: 3px;
             background: var(--text-color);
-            margin: 4px 0;
+            margin: 5px 0;
             border-radius: 2px;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(.4, 2, .6, 1);
+        }
+
+        .hamburger.open .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.open .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        @media (max-width: 900px) {
+            .main-nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
         }
 
         .mobile-nav {
             display: none;
-            position: fixed;
-            top: 70px;
-            right: 10%;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            padding: 20px 30px;
             flex-direction: column;
-            gap: 20px;
-            z-index: 150;
-            position: relative;
-            overflow: hidden;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 80vw;
+            max-width: 340px;
+            height: 100vh;
+            background: rgba(10, 26, 10, 0.98);
+            box-shadow: -4px 0 32px rgba(0, 0, 0, 0.25);
+            z-index: 9999 !important;
+            padding: 90px 32px 32px 32px;
+            gap: 24px;
+            transition: transform 0.3s cubic-bezier(.4, 2, .6, 1), opacity 0.2s;
+            transform: translateX(100%);
+            opacity: 0;
+            pointer-events: none;
         }
 
-
+        .mobile-nav.open {
+            display: flex;
+            transform: translateX(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
 
         .mobile-nav .nav-link {
-            display: block;
-            margin-bottom: 10px;
             color: var(--text-color);
-            text-align: left;
             font-size: 1.2rem;
+            text-decoration: none;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: color 0.2s;
+        }
+
+        .mobile-nav .nav-link:last-child {
+            border-bottom: none;
         }
 
         .mobile-nav .btn {
+            margin-top: 18px;
             width: 100%;
             text-align: center;
+        }
+
+        @media (min-width: 901px) {
+            .mobile-nav {
+                display: none !important;
+            }
+        }
+
+        /* Remove unnecessary z-index/stacking from header/hero */
+        header,
+        .hero,
+        .hero-content {
+            z-index: auto !important;
+            position: static !important;
         }
 
         /* GENERAL STYLES & UTILITIES */
@@ -333,6 +392,7 @@
             text-align: center;
             min-height: 100vh;
             padding: 0 20px;
+            z-index: auto !important;
         }
 
         .hero-content {
@@ -918,9 +978,7 @@
                 display: flex;
             }
 
-            .mobile-nav {
-                display: none;
-            }
+
 
             .social-grid {
                 grid-template-columns: 1fr;
@@ -1073,6 +1131,12 @@
 </head>
 
 <body>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation">
+        <a href="{{ url_for('blog') }}" class="nav-link">Blog</a>
+        <a href="{{ url_for('courses') }}" class="nav-link">Courses</a>
+        <a href="{{ url_for('social_links') }}" class="nav-link">Links</a>
+        <a href="https://www.youtube.com/@Anipreneur" target="_blank" class="btn nav-link">Subscribe Now</a>
+    </nav>
     <!-- Islamic Pattern Overlay -->
     <div class="islamic-pattern"></div>
 
@@ -1091,17 +1155,12 @@
             <a href="{{ url_for('social_links') }}" class="nav-link">Links</a>
             <a href="https://www.youtube.com/@Anipreneur" target="_blank" class="btn nav-link">Subscribe Now</a>
         </nav>
-        <div class="hamburger" id="hamburger-menu" tabindex="0" aria-label="Open menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="mobile-nav" id="mobile-nav">
-            <a href="{{ url_for('blog') }}" class="nav-link">Blog</a>
-            <a href="{{ url_for('courses') }}" class="nav-link">Courses</a>
-            <a href="{{ url_for('social_links') }}" class="nav-link">Links</a>
-            <a href="https://www.youtube.com/@Anipreneur" target="_blank" class="btn nav-link">Subscribe Now</a>
-        </div>
+        <button class="hamburger" id="hamburger-menu" aria-label="Open menu" aria-controls="mobile-nav"
+            aria-expanded="false" type="button">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
     </header>
 
     <!-- Main Content -->
@@ -1277,20 +1336,72 @@
         animateStar();
 
         // Hamburger menu toggle
-        const hamburger = document.getElementById('hamburger-menu');
-        const mobileNav = document.getElementById('mobile-nav');
-        hamburger.addEventListener('click', function () {
-            const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-            hamburger.setAttribute('aria-expanded', !expanded);
-            mobileNav.style.display = mobileNav.style.display === 'flex' ? 'none' : 'flex';
-        });
+        document.addEventListener('DOMContentLoaded', function () {
+            const hamburger = document.getElementById('hamburger-menu');
+            const mobileNav = document.getElementById('mobile-nav');
+            const focusableSelectors = 'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])';
+            let lastFocusedElement = null;
 
-        // Close mobile nav on outside click
-        document.addEventListener('click', function (e) {
-            if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
-                mobileNav.style.display = 'none';
-                hamburger.setAttribute('aria-expanded', false);
+            function openMenu() {
+                hamburger.classList.add('open');
+                mobileNav.classList.add('open');
+                hamburger.setAttribute('aria-expanded', 'true');
+                mobileNav.setAttribute('aria-hidden', 'false');
+                lastFocusedElement = document.activeElement;
+                // Focus first link
+                const firstLink = mobileNav.querySelector(focusableSelectors);
+                if (firstLink) firstLink.focus();
+                document.body.style.overflow = 'hidden';
             }
+            function closeMenu() {
+                hamburger.classList.remove('open');
+                mobileNav.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+                mobileNav.setAttribute('aria-hidden', 'true');
+                if (lastFocusedElement) lastFocusedElement.focus();
+                document.body.style.overflow = '';
+            }
+            hamburger.addEventListener('click', function (e) {
+                if (hamburger.classList.contains('open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+            // Close on outside click
+            document.addEventListener('mousedown', function (e) {
+                if (mobileNav.classList.contains('open') && !mobileNav.contains(e.target) && !hamburger.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+            // Close on Escape key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+                    closeMenu();
+                }
+                // Trap focus
+                if (mobileNav.classList.contains('open')) {
+                    const focusableEls = Array.from(mobileNav.querySelectorAll(focusableSelectors));
+                    if (focusableEls.length === 0) return;
+                    const firstEl = focusableEls[0];
+                    const lastEl = focusableEls[focusableEls.length - 1];
+                    if (e.key === 'Tab') {
+                        if (e.shiftKey && document.activeElement === firstEl) {
+                            e.preventDefault();
+                            lastEl.focus();
+                        } else if (!e.shiftKey && document.activeElement === lastEl) {
+                            e.preventDefault();
+                            firstEl.focus();
+                        }
+                    }
+                }
+            });
+            // Close on link click
+            mobileNav.addEventListener('click', function (e) {
+                if (e.target.classList.contains('nav-link')) {
+                    closeMenu();
+                }
+            });
         });
 
         // --- SCROLL TO TOP FUNCTIONALITY ---
