@@ -27,35 +27,35 @@
 
     {% if recent_posts %}
     <div class="table-container">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Status</th>
-                    <th>Author</th>
-                    <th>Created</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for post in recent_posts %}
-                <tr>
-                    <td>{{ post.title }}</td>
-                    <td>
-                        <span class="status-badge status-{{ post.status }}">
-                            {{ post.status.title() }}
-                        </span>
-                    </td>
-                    <td>{{ post.author.username }}</td>
-                    <td>{{ post.created_at.strftime('%Y-%m-%d') }}</td>
-                    <td>
-                        <a href="{{ url_for('admin_edit_post', id=post.id) }}" class="btn"
-                            style="padding: 5px 10px; font-size: 0.8rem;">Edit</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Author</th>
+                <th>Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in recent_posts %}
+            <tr>
+                <td>{{ post.title }}</td>
+                <td>
+                    <span class="status-badge status-{{ post.status }}">
+                        {{ post.status.title() }}
+                    </span>
+                </td>
+                <td>{{ post.author.username }}</td>
+                <td>{{ post.created_at.strftime('%Y-%m-%d') }}</td>
+                <td>
+                    <a href="{{ url_for('admin_edit_post', id=post.id) }}" class="btn"
+                        style="padding: 5px 10px; font-size: 0.8rem;">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     </div>
     {% else %}
     <p style="color: var(--text-secondary); text-align: center; padding: 20px;">No posts yet. <a
