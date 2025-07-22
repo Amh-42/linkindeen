@@ -72,6 +72,10 @@ def post_detail(slug):
 def detail():
     return render_template('detail-page.html')
 
+@app.route('/mlm')
+def mlm():
+    return render_template('dissertation.html')
+
 # Admin routes
 @app.route('/admin/login', methods=['GET', 'POST'])
 def admin_login():

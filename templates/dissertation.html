@@ -1,0 +1,706 @@
+{% extends "base.html" %}
+
+{% block title %}LinkInDeen - Islamic Golden Age Revival{% endblock %}
+
+{% block extra_styles %}
+/* ABOUT SECTION */
+.about-content {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 40px;
+}
+
+.features-list {
+list-style: none;
+max-width: 700px;
+}
+
+.features-list li {
+background: var(--card-bg);
+border: 1px solid var(--border-color);
+padding: 20px;
+margin-bottom: 20px;
+border-radius: 10px;
+display: flex;
+align-items: center;
+gap: 20px;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.features-list li:hover {
+transform: translateY(-5px);
+box-shadow: 0 0 20px var(--glow-color);
+}
+
+.features-list i {
+font-size: 1.5rem;
+color: var(--secondary-color);
+min-width: 30px;
+text-align: center;
+}
+
+/* PR STUNT / INTELLECTUAL CHALLENGE SECTION */
+.pr-stunt-section {
+padding-top: 50px;
+padding-bottom: 50px;
+}
+
+.terminal {
+background: rgba(10, 12, 24, 0.9);
+border: 1px solid var(--border-color);
+border-radius: 8px;
+box-shadow: 0 0 40px rgba(0, 191, 255, 0.2);
+backdrop-filter: blur(5px);
+overflow: hidden;
+font-family: 'Courier New', Courier, monospace;
+}
+
+.terminal-header {
+background: #1a1d2e;
+padding: 10px;
+display: flex;
+align-items: center;
+border-bottom: 1px solid var(--border-color);
+}
+
+.terminal-buttons {
+display: flex;
+}
+
+.terminal-buttons span {
+display: block;
+width: 12px;
+height: 12px;
+border-radius: 50%;
+margin-right: 8px;
+}
+
+.btn-close {
+background: #ff5f56;
+}
+
+.btn-min {
+background: #ffbd2e;
+}
+
+.btn-max {
+background: #27c93f;
+}
+
+.terminal-title {
+color: var(--text-secondary);
+font-size: 0.9rem;
+margin: 0 auto;
+}
+
+.terminal-body {
+padding: 20px;
+min-height: 250px;
+font-size: 1rem;
+line-height: 1.5;
+color: #00ff41;
+text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+}
+
+.terminal-body .line {
+white-space: pre-wrap;
+}
+
+.terminal-body .line.highlight {
+color: var(--accent-yellow);
+}
+
+.cursor {
+display: inline-block;
+background: #00ff41;
+width: 8px;
+height: 16px;
+animation: blink 1s infinite;
+}
+
+@keyframes blink {
+0%, 50% { opacity: 1; }
+51%, 100% { opacity: 0; }
+}
+
+.puzzle-container {
+display: none;
+padding: 20px;
+background: rgba(0, 0, 0, 0.3);
+}
+
+.puzzle-container.visible {
+display: block;
+}
+
+.input-group {
+display: flex;
+gap: 10px;
+align-items: center;
+margin-top: 15px;
+}
+
+.input-group label {
+color: #00ff41;
+font-size: 0.9rem;
+}
+
+.input-group input {
+background: rgba(0, 0, 0, 0.5);
+border: 1px solid var(--border-color);
+color: #00ff41;
+padding: 8px 12px;
+border-radius: 4px;
+font-family: 'Courier New', Courier, monospace;
+font-size: 0.9rem;
+}
+
+.decrypt-btn {
+background: var(--primary-color);
+color: #000;
+border: none;
+padding: 8px 16px;
+border-radius: 4px;
+font-weight: 600;
+cursor: pointer;
+font-family: 'Courier New', Courier, monospace;
+}
+
+.decrypt-btn:hover {
+background: var(--accent-yellow);
+}
+
+#terminal-message {
+margin-bottom: 15px;
+font-weight: 600;
+}
+
+.success-message {
+color: #27c93f;
+}
+
+.error-message {
+color: #ff5f56;
+}
+
+.video-reveal {
+display: none;
+padding: 20px;
+background: rgba(0, 0, 0, 0.3);
+}
+
+.video-reveal.visible {
+display: block;
+}
+
+.video-reveal h3 {
+color: var(--accent-yellow);
+margin-bottom: 15px;
+font-family: 'Courier New', Courier, monospace;
+}
+
+.decrypted-message {
+color: #00ff41;
+font-style: italic;
+margin-bottom: 20px;
+text-align: center;
+font-size: 1.1rem;
+}
+
+.video-wrapper {
+position: relative;
+width: 100%;
+height: 0;
+padding-bottom: 56.25%;
+border-radius: 8px;
+overflow: hidden;
+}
+
+.video-wrapper iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
+/* VIDEO GRID */
+.video-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+gap: 30px;
+margin-top: 50px;
+}
+
+.video-card {
+background: var(--card-bg);
+border: 1px solid var(--border-color);
+border-radius: 15px;
+overflow: hidden;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 20px 40px rgba(0, 191, 255, 0.3);
+}
+
+.video-thumbnail {
+position: relative;
+width: 100%;
+height: 0;
+padding-bottom: 56.25%;
+overflow: hidden;
+}
+
+.video-thumbnail iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
+.video-info {
+padding: 25px;
+}
+
+.video-info h3 {
+font-size: 1.3rem;
+margin-bottom: 15px;
+color: var(--text-color);
+}
+
+.video-info p {
+color: var(--text-secondary);
+line-height: 1.6;
+}
+
+/* BLOG GRID */
+.blog-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 30px;
+margin-top: 50px;
+}
+
+.blog-card {
+background: var(--card-bg);
+border: 1px solid var(--border-color);
+border-radius: 15px;
+padding: 30px;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 15px 30px rgba(0, 191, 255, 0.2);
+}
+
+.blog-card h3 {
+font-size: 1.2rem;
+margin-bottom: 15px;
+color: var(--text-color);
+}
+
+.blog-card p {
+color: var(--text-secondary);
+line-height: 1.6;
+margin-bottom: 20px;
+}
+
+.read-more {
+color: var(--primary-color);
+text-decoration: none;
+font-weight: 600;
+transition: color 0.3s ease;
+}
+
+.read-more:hover {
+color: var(--accent-yellow);
+}
+
+/* CTA SECTION */
+.cta-section {
+text-align: center;
+background: var(--card-bg);
+border: 1px solid var(--border-color);
+border-radius: 20px;
+padding: 60px 40px;
+margin-top: 80px;
+}
+
+.cta-section h2 {
+font-size: 2.5rem;
+margin-bottom: 20px;
+}
+
+.cta-section p {
+font-size: 1.2rem;
+color: var(--text-secondary);
+margin-bottom: 40px;
+max-width: 600px;
+margin-left: auto;
+margin-right: auto;
+}
+
+@media (max-width: 768px) {
+.video-grid {
+grid-template-columns: 1fr;
+}
+
+.blog-grid {
+grid-template-columns: 1fr;
+}
+}
+{% endblock %}
+
+{% block content %}
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+    <div class="hero-content" data-aos="fade-in" data-aos-delay="200">
+        <h1>Halal <span>Network Marketing.</span> Dissertation</h1>
+        <p>A transparent guide to an ethical business model designed for personal development, financial empowerment, and collective growth, rooted in our shared values.</p>
+        <a href="#about" class="btn">Learn More <i class="fas fa-arrow-down"></i></a>
+    </div>
+</section>
+
+
+
+
+<!-- FEATURED VIDEOS SECTION -->
+<section id="videos" class="container">
+    <h2 data-aos="fade-up">Decoding the Model:<span> Right vs. Wrong </span></h2>
+    <div class="video-grid" style="gap: 32px;">
+        <div class="video-card" data-aos="fade-up" data-aos-delay="100" style="padding: 32px 24px;">
+            <div class="video-info">
+                <h3 style="margin-bottom: 18px;">Ethical Network Marketing <span style="color: var(--islamic-green); font-size: 1.3em;">✓</span></h3>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 14px;"><span style="color: var(--islamic-green); font-weight: bold; margin-right: 8px;">✓</span>Sell real, high-quality products</li>
+                    <li style="margin-bottom: 14px;"><span style="color: var(--islamic-green); font-weight: bold; margin-right: 8px;">✓</span>Earn from product sales &amp; team</li>
+                    <li style="margin-bottom: 14px;"><span style="color: var(--islamic-green); font-weight: bold; margin-right: 8px;">✓</span>Transparent, fair compensation</li>
+                    <li style="margin-bottom: 14px;"><span style="color: var(--islamic-green); font-weight: bold; margin-right: 8px;">✓</span>Focus on long-term customers</li>
+                    <li style="margin-bottom: 0;"><span style="color: var(--islamic-green); font-weight: bold; margin-right: 8px;">✓</span>Real training &amp; mentorship</li>
+                </ul>
+            </div>
+        </div>
+        <div class="video-card" data-aos="fade-up" data-aos-delay="200" style="padding: 32px 24px;">
+            <div class="video-info">
+                <h3 style="margin-bottom: 18px;">Illegal Pyramid Scheme <span style="color: #d9534f; font-size: 1.3em;">✗</span></h3>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 14px;"><span style="color: #d9534f; font-weight: bold; margin-right: 8px;">✗</span>Little or no real product</li>
+                    <li style="margin-bottom: 14px;"><span style="color: #d9534f; font-weight: bold; margin-right: 8px;">✗</span>Income from recruiting only</li>
+                    <li style="margin-bottom: 14px;"><span style="color: #d9534f; font-weight: bold; margin-right: 8px;">✗</span>Unrealistic, guaranteed returns</li>
+                    <li style="margin-bottom: 14px;"><span style="color: #d9534f; font-weight: bold; margin-right: 8px;">✗</span>Model always collapses</li>
+                    <li style="margin-bottom: 0;"><span style="color: #d9534f; font-weight: bold; margin-right: 8px;">✗</span>No real training, just pressure</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BLOG/INSIGHTS TEASER -->
+<section id="alpha-training" class="container">
+    <style>
+        .alpha-card-shine {
+            position: relative;
+            background: var(--card-bg, #181c2a);
+            border: 1px solid var(--border-color, #23263a);
+            border-radius: 14px;
+            box-shadow: 0 2px 16px 0 rgba(60, 60, 90, 0.08);
+            padding: 36px 28px;
+            transition: 
+                transform 0.3s cubic-bezier(.4,1.2,.6,1),
+                box-shadow 0.3s cubic-bezier(.4,1.2,.6,1);
+            overflow: hidden;
+            z-index: 1;
+        }
+        .alpha-card-shine:hover {
+            transform: translateY(-7px) scale(1.025);
+            box-shadow: 0 0 32px 0 var(--glow-color, #e6c97b88), 0 8px 32px 0 rgba(60, 60, 90, 0.18);
+        }
+        .alpha-card-shine::before {
+            content: "";
+            position: absolute;
+            top: -60%;
+            left: -60%;
+            width: 220%;
+            height: 220%;
+            background: linear-gradient(
+                120deg,
+                rgba(255,255,255,0) 60%,
+                rgba(255,255,255,0.18) 80%,
+                rgba(255,255,255,0) 100%
+            );
+            transform: rotate(0deg);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            z-index: 2;
+        }
+        .alpha-card-shine:hover::before {
+            animation: alpha-shine-move 1.1s cubic-bezier(.4,1.2,.6,1);
+            opacity: 1;
+        }
+        @keyframes alpha-shine-move {
+            0% {
+                transform: translateX(-60%) rotate(0deg);
+                opacity: 0;
+            }
+            30% {
+                opacity: 1;
+            }
+            60% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(60%) rotate(0deg);
+                opacity: 0;
+            }
+        }
+        .alpha-card-shine .alpha-chart-legend {
+            margin-top: 18px;
+        }
+        .alpha-card-shine .alpha-chart-legend div {
+            margin-bottom: 4px;
+        }
+    </style>
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 40px;">
+        <div style="flex: 1 1 320px; min-width: 280px;">
+            <h2>Alpha Training: The Engine of Our Vision</h2>
+            <p>
+                Our foundation is built on a product of genuine value. Alpha Training provides a comprehensive curriculum for personal mastery. I have personally experienced its transformative power. The "Golden Package" is structured around four key pillars, each designed to empower individuals in a specific area of life.
+            </p>
+            <p>
+                This chart shows the balanced focus of the core training content, ensuring holistic development. It's not just a business, it's a journey of profound self-improvement.
+            </p>
+        </div>
+        <div style="flex: 1 1 320px; min-width: 280px; display: flex; flex-direction: column; align-items: center;">
+            <div class="alpha-card-shine">
+                <!-- Donut chart recreation using HTML/CSS only (no style as per instructions) -->
+                <svg width="180" height="180" viewBox="0 0 180 180" aria-label="Alpha Training Focus Chart">
+                    <circle r="70" cx="90" cy="90" fill="none" stroke="yellow" stroke-width="30"/>
+                    <circle r="70" cx="90" cy="90" fill="none" stroke="orange" stroke-width="30"
+                        stroke-dasharray="110 330" stroke-dashoffset="0"/>
+                    <circle r="70" cx="90" cy="90" fill="none" stroke="blue" stroke-width="30"
+                        stroke-dasharray="110 330" stroke-dashoffset="-110"/>
+                    <circle r="70" cx="90" cy="90" fill="none" stroke="green" stroke-width="30"
+                        stroke-dasharray="55 330" stroke-dashoffset="-220"/>
+                    <circle r="70" cx="90" cy="90" fill="none" stroke="gold" stroke-width="30"
+                        stroke-dasharray="55 330" stroke-dashoffset="-275"/>
+                </svg>
+                <div class="alpha-chart-legend">
+                    <div>
+                        <span style="display:inline-block;width:16px;height:8px;background:blue;margin-right:8px;vertical-align:middle;"></span>
+                        Success Journey
+                    </div>
+                    <div>
+                        <span style="display:inline-block;width:16px;height:8px;background:yellow;margin-right:8px;vertical-align:middle;"></span>
+                        Powerful Process
+                    </div>
+                    <div>
+                        <span style="display:inline-block;width:16px;height:8px;background:orange;margin-right:8px;vertical-align:middle;"></span>
+                        Habit Building
+                    </div>
+                    <div>
+                        <span style="display:inline-block;width:16px;height:8px;background:green;margin-right:8px;vertical-align:middle;"></span>
+                        Mind Programming
+                    </div>
+                    <div>
+                        <span style="display:inline-block;width:16px;height:8px;background:gold;margin-right:8px;vertical-align:middle;"></span>
+                        Leadership & Teamwork
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- OPPORTUNITY IN ETHIOPIA SECTION -->
+<section id="opportunity-ethiopia" class="container" style="margin-top: 48px; margin-bottom: 48px;">
+    <h2 style="text-align: center; margin-bottom: 18px; color: var(--secondary-color);" data-aos="fade-up">The Opportunity in Ethiopia</h2>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 32px auto;" data-aos="fade-up" data-aos-delay="100">
+        While network marketing faces challenges like low public trust, it presents immense opportunities for growth, empowerment, and community building in Ethiopia. By leading with transparency and a valuable product, we can leverage these opportunities to create a positive impact.
+    </p>
+    <div class="alpha-card-shine bar-chart-container" style="max-width: 700px; margin: 0 auto 32px auto;">
+        <div class="bar-chart-legend" style="display: flex; justify-content: center; gap: 32px; margin-bottom: 18px; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="display:inline-block;width:24px;height:12px;background:#e05a8a;border-radius:4px;"></span>
+                <span style="font-size: 1rem;">Challenges</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="display:inline-block;width:24px;height:12px;background:#fbb040;border-radius:4px;"></span>
+                <span style="font-size: 1rem;">Opportunities</span>
+            </div>
+        </div>
+        <div class="bar-chart" style="display: flex; align-items: flex-end; gap: 36px; height: 260px; padding: 0 16px 24px 16px; background: var(--card-bg); border-radius: 14px; border: 1px solid var(--border-color); box-shadow: 0 2px 16px 0 rgba(60,60,90,0.08);">
+            <!-- Each group: label, two bars -->
+            <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                <div style="display: flex; align-items: flex-end; gap: 6px; height: 200px;">
+                    <div class="bar challenges" style="width: 32px; height: 140px; background: #e05a8a; border-radius: 6px 6px 0 0;"></div>
+                    <div class="bar opportunities" style="width: 32px; height: 70px; background: #fbb040; border-radius: 6px 6px 0 0;"></div>
+                </div>
+                <div style="margin-top: 12px; font-size: 1rem; text-align: center;">Public Perception</div>
+            </div>
+            <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                <div style="display: flex; align-items: flex-end; gap: 6px; height: 200px;">
+                    <div class="bar challenges" style="width: 32px; height: 110px; background: #e05a8a; border-radius: 6px 6px 0 0;"></div>
+                    <div class="bar opportunities" style="width: 32px; height: 90px; background: #fbb040; border-radius: 6px 6px 0 0;"></div>
+                </div>
+                <div style="margin-top: 12px; font-size: 1rem; text-align: center;">Regulations</div>
+            </div>
+            <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                <div style="display: flex; align-items: flex-end; gap: 6px; height: 200px;">
+                    <div class="bar challenges" style="width: 32px; height: 30px; background: #e05a8a; border-radius: 6px 6px 0 0;"></div>
+                    <div class="bar opportunities" style="width: 32px; height: 170px; background: #fbb040; border-radius: 6px 6px 0 0;"></div>
+                </div>
+                <div style="margin-top: 12px; font-size: 1rem; text-align: center;">Market Potential</div>
+            </div>
+            <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                <div style="display: flex; align-items: flex-end; gap: 6px; height: 200px;">
+                    <div class="bar challenges" style="width: 32px; height: 20px; background: #e05a8a; border-radius: 6px 6px 0 0;"></div>
+                    <div class="bar opportunities" style="width: 32px; height: 180px; background: #fbb040; border-radius: 6px 6px 0 0;"></div>
+                </div>
+                <div style="margin-top: 12px; font-size: 1rem; text-align: center;">Community Demand</div>
+            </div>
+        </div>
+        <!-- Y-axis labels (optional, for clarity) -->
+        <div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.95rem; color: var(--secondary-color);">
+            <span>0%</span>
+            <span>50%</span>
+            <span>100%</span>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="container">
+    <div class="cta-section" data-aos="zoom-in">
+        <h2>Ready to Revive the Golden Age?</h2>
+        <p>Subscribe for regular insights and join a community dedicated to reviving Islamic Golden Age principles.
+            Your journey to mastery starts now.</p>
+        <a href="https://www.youtube.com/@Anipreneur" target="_blank" class="btn">Subscribe on YouTube <i
+                class="fab fa-youtube"></i></a>
+    </div>
+</section>
+<!-- OPPORTUNITY IN ETHIOPIA SECTION -->
+<section id="opportunity-ethiopia" class="container" style="margin-top: 48px; margin-bottom: 48px;">
+    <h2 style="text-align: center; margin-bottom: 18px; color: var(--secondary-color);" data-aos="fade-up">The Opportunity in Ethiopia</h2>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 32px auto;" data-aos="fade-up" data-aos-delay="100">
+        While network marketing faces challenges like low public trust, it presents immense opportunities for growth, empowerment, and community building in Ethiopia. By leading with transparency and a valuable product, we can leverage these opportunities to create a positive impact.
+    </p>
+    <div class="alpha-card-shine bar-chart-container" style="max-width: 700px; margin: 0 auto 32px auto;">
+        <div class="bar-chart-legend" style="display: flex; justify-content: center; gap: 32px; margin-bottom: 18px; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="display:inline-block;width:24px;height:12px;background:#e05a8a;border-radius:4px;"></span>
+                <span style="font-size: 1rem;">Challenges</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="display:inline-block;width:24px;height:12px;background:#fbb040;border-radius:4px;"></span>
+                <span style="font-size: 1rem;">Opportunities</span>
+            </div>
+        </div>
+        <div class="bar-chart" style="display: flex; align-items: flex-end; gap: 36px; height: 260px; padding: 0 16px 24px 16px; background: var(--card-bg); border-radius: 14px; border: 1px solid var(--border-color); box-shadow: 0 2px 16px 0 rgba(60,60,90,0.08);">
+            <!-- Each group: label, two bars -->
+            <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                <div style="display: flex; align-items: flex-end; gap: 6px; height: 200px;">
+                    <div class="bar challenges" style="width: 32px; height: 140px; background: #e05a8a; border-radius: 6px 6px 0 0;"></div>
+                    <div class="bar opportunities" style="width: 32px; height: 70px; background: #fbb040; border-radius: 6px 6px 0 0;"></div>
+                </div>
+                <div style="margin-top: 12px; font-size: 1rem; text-align: center;">Public Perception</div>
+            </div>
+            <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                <div style="display: flex; align-items: flex-end; gap: 6px; height: 200px;">
+                    <div class="bar challenges" style="width: 32px; height: 110px; background: #e05a8a; border-radius: 6px 6px 0 0;"></div>
+                    <div class="bar opportunities" style="width: 32px; height: 90px; background: #fbb040; border-radius: 6px 6px 0 0;"></div>
+                </div>
+                <div style="margin-top: 12px; font-size: 1rem; text-align: center;">Regulations</div>
+            </div>
+            <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                <div style="display: flex; align-items: flex-end; gap: 6px; height: 200px;">
+                    <div class="bar challenges" style="width: 32px; height: 30px; background: #e05a8a; border-radius: 6px 6px 0 0;"></div>
+                    <div class="bar opportunities" style="width: 32px; height: 170px; background: #fbb040; border-radius: 6px 6px 0 0;"></div>
+                </div>
+                <div style="margin-top: 12px; font-size: 1rem; text-align: center;">Market Potential</div>
+            </div>
+            <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                <div style="display: flex; align-items: flex-end; gap: 6px; height: 200px;">
+                    <div class="bar challenges" style="width: 32px; height: 20px; background: #e05a8a; border-radius: 6px 6px 0 0;"></div>
+                    <div class="bar opportunities" style="width: 32px; height: 180px; background: #fbb040; border-radius: 6px 6px 0 0;"></div>
+                </div>
+                <div style="margin-top: 12px; font-size: 1rem; text-align: center;">Community Demand</div>
+            </div>
+        </div>
+        <!-- Y-axis labels (optional, for clarity) -->
+        <div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.95rem; color: var(--secondary-color);">
+            <span>0%</span>
+            <span>50%</span>
+            <span>100%</span>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="container">
+    <div class="cta-section" data-aos="zoom-in">
+        <h2>Ready to Revive the Golden Age?</h2>
+        <p>Subscribe for regular insights and join a community dedicated to reviving Islamic Golden Age principles.
+            Your journey to mastery starts now.</p>
+        <a href="https://www.youtube.com/@Anipreneur" target="_blank" class="btn">Subscribe on YouTube <i
+                class="fab fa-youtube"></i></a>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+// Terminal puzzle functionality
+const terminalBody = document.getElementById("terminal-body"),
+cursor = document.getElementById("cursor"),
+puzzleContainer = document.getElementById("puzzle-container"),
+terminalMessage = document.getElementById("terminal-message"),
+keyInput = document.getElementById("decryption-key"),
+decryptBtn = document.getElementById("decrypt-btn"),
+videoReveal = document.getElementById("video-reveal"),
+decryptedMessageContainer = document.getElementById("decrypted-message"),
+prStuntSection = document.getElementById("pr-stunt"),
+CORRECT_KEY = "ABDUR RAHMAN IBN AWF",
+DECRYPTED_MESSAGE = "True mastery isn't about individual brilliance, but about systematic excellence that builds civilizations.",
+linesToType = [
+{ text: "Booting GOLDEN_AGE_PROTOCOLS.EXE...", delay: 50 },
+{ text: "Accessing ancient knowledge systems... Done.", delay: 50 },
+{ text: "Loading encrypted file: [GOLDEN_AGE_MASTERY]", delay: 50 },
+{ text: "...", delay: 500 },
+{ text: "FILE CONTENTS:", delay: 50, class: "highlight" },
+{ text: "V\VWHP LV WKH NH\ WR EXLOGLQJ FLYLOL]DWLRQV WKDW ODVW IRU FHQWXULHV.", delay: 20 },
+{ text: "...", delay: 500 },
+{ text: "DECRYPTION HINT:", delay: 50, class: "highlight" },
+{ text: "When Someone offered him Half of everything he owned he said 'May Allah bless your wealth and family, but show me the market.' (Who is he? Enter his name as the key)", delay: 50 },
+{ text: "Awaiting user input...", delay: 50 }
+];
+
+let lineIndex = 0;
+
+function typeLine() {
+if (lineIndex < linesToType.length) { const e=linesToType[lineIndex], t=document.createElement("div");
+    t.classList.add("line"), e.class && t.classList.add(e.class); let a=0; terminalBody.insertBefore(t, cursor),
+    function l() { a < e.text.length ? (t.innerHTML +=e.text.charAt(a), a++,
+    terminalBody.scrollTop=terminalBody.scrollHeight, setTimeout(l, e.delay / 2)) : (lineIndex++, setTimeout(typeLine, 2
+    * e.delay)) }() } else cursor.style.display="none" , puzzleContainer.classList.add("visible"), keyInput.focus() }
+    function handleDecryption() { const e=keyInput.value.toUpperCase().trim(); e===CORRECT_KEY ?
+    (terminalMessage.textContent="ACCESS GRANTED. DECRYPTION SUCCESSFUL." , terminalMessage.className="success-message"
+    , puzzleContainer.style.display="none" , decryptedMessageContainer.textContent=`"${DECRYPTED_MESSAGE}"`,
+    videoReveal.classList.add("visible")) :
+    (terminalMessage.textContent="ACCESS DENIED. KEY INCORRECT. SECURITY ALERT TRIGGERED." ,
+    terminalMessage.className="error-message" , keyInput.value="" , keyInput.focus()) }
+    decryptBtn.addEventListener("click", handleDecryption), keyInput.addEventListener("keyup", e=> { e.key === "Enter"
+    && handleDecryption() });
+
+    const observer = new IntersectionObserver(e => {
+    e.forEach(e => {
+    e.isIntersecting && (setTimeout(typeLine, 500), observer.unobserve(e.target))
+    })
+    }, { threshold: .5 });
+
+    observer.observe(prStuntSection);
+    {% endblock %}
