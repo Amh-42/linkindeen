@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://linkindeen.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /instance/
+Disallow: /venv/
+
+# Allow important pages
+Allow: /blog/
+Allow: /courses/
+Allow: /social_links/ 

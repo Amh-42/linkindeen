@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+    <msapplication>
+        <tile>
+            <square150x150logo src="https://via.placeholder.com/150x150/7dc400/ffffff?text=LinkInDeen"/>
+            <TileColor>#7dc400</TileColor>
+        </tile>
+    </msapplication>
+</browserconfig> 

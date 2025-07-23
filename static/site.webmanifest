@@ -1,0 +1,29 @@
+{
+    "name": "LinkInDeen - Islamic Golden Age Revival",
+    "short_name": "LinkInDeen",
+    "description": "Islamic Golden Age Revival - Education, Knowledge, and Community",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0a1a0a",
+    "theme_color": "#7dc400",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/static/images/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/static/images/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "categories": [
+        "education",
+        "religion",
+        "social"
+    ],
+    "lang": "en",
+    "dir": "ltr"
+}
