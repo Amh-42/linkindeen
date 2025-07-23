@@ -7,162 +7,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- Primary Meta Tags -->
-    <title>{% block title %}LinkInDeen - Islamic Golden Age Revival | Islamic Education & Knowledge{% endblock %}
-    </title>
-    <meta name="title"
-        content="{% block meta_title %}LinkInDeen - Islamic Golden Age Revival | Islamic Education & Knowledge{% endblock %}">
-    <meta name="description"
-        content="{% block meta_description %}Discover the wisdom of the Islamic Golden Age. Explore Islamic education, courses, blog posts, and connect with a community dedicated to reviving Islamic knowledge and values.{% endblock %}">
-    <meta name="keywords"
-        content="{% block meta_keywords %}Islamic education, Islamic Golden Age, Islamic knowledge, Islamic courses, Islamic blog, Muslim community, Islamic values, Islamic wisdom, Islamic learning, Islamic revival{% endblock %}">
-    <meta name="author" content="LinkInDeen">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="language" content="English">
-    <meta name="revisit-after" content="7 days">
-    <meta name="distribution" content="global">
-    <meta name="rating" content="general">
-    <meta name="theme-color" content="#7dc400">
-    <meta name="msapplication-TileColor" content="#7dc400">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="LinkInDeen">
-    <meta name="application-name" content="LinkInDeen">
-    <meta name="msapplication-config" content="/browserconfig.xml">
+<title>LinkInDeen - Islamic Golden Age Revival
+</title>
+<meta name="title" content="LinkInDeen - Islamic Golden Age Revival
+" />
+<meta name="description" content="Discover the wisdom of the Islamic Golden Age. Explore Islamic education, courses, blog posts, and connect with a community dedicated to reviving Islamic knowledge and values." />
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="{{ request.url }}">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://linkindeen.com/" />
+<meta property="og:title" content="LinkInDeen - Islamic Golden Age Revival
+" />
+<meta property="og:description" content="Discover the wisdom of the Islamic Golden Age. Explore Islamic education, courses, blog posts, and connect with a community dedicated to reviving Islamic knowledge and values." />
+<meta property="og:image" content="{{ url_for('static', filename='images/ogv2.0.png') }}" />
 
-    <!-- Alternate Languages (if you have multiple language versions) -->
-    <link rel="alternate" hreflang="en" href="{{ request.url }}">
-    <link rel="alternate" hreflang="ar" href="{{ request.url }}?lang=ar">
-    <link rel="alternate" hreflang="x-default" href="{{ request.url }}">
+<!-- X (Twitter) -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://linkindeen.com/" />
+<meta property="twitter:title" content="LinkInDeen - Islamic Golden Age Revival
+" />
+<meta property="twitter:description" content="Discover the wisdom of the Islamic Golden Age. Explore Islamic education, courses, blog posts, and connect with a community dedicated to reviving Islamic knowledge and values." />
+<meta property="twitter:image" content="{{ url_for('static', filename='images/ogv2.0.png') }}" />
 
-    <!-- Open Graph / Facebook -->
-    <!-- These meta tags control how your website appears when shared on Facebook, LinkedIn, and other social media -->
-    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
-    <meta property="og:url" content="{{ request.url }}">
-    <meta property="og:title" content="{% block og_title %}LinkInDeen - Islamic Golden Age Revival{% endblock %}">
-    <meta property="og:description"
-        content="{% block og_description %}Discover the wisdom of the Islamic Golden Age. Explore Islamic education, courses, blog posts, and connect with a community dedicated to reviving Islamic knowledge and values.{% endblock %}">
-    <!-- 
-    Open Graph Image: This is the main image that appears when your website is shared on social media
-    - URL: Unsplash photo of Islamic architecture (beautiful geometric patterns)
-    - Size: 1200x630 pixels (optimal for Facebook/LinkedIn)
-    - Parameters: w=1200&h=630&fit=crop&crop=center&auto=format&q=80
-      * w=1200: width 1200px
-      * h=630: height 630px  
-      * fit=crop: crop image to fit dimensions
-      * crop=center: crop from center
-      * auto=format: auto-optimize format
-      * q=80: 80% quality for fast loading
-    -->
-    <meta property="og:image"
-        content="{% block og_image %}https://s918.lon1.mysecurecloudhost.com:2083/cpsess1838389083/viewer/home%2flinkinwz%2flinkindeen%2fstatic%2fimages/ogv2.0.png{% endblock %}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="LinkInDeen - Islamic Golden Age Revival">
-    <meta property="og:site_name" content="LinkInDeen">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:locale:alternate" content="ar_AR">
-
-    <!-- Twitter -->
-    <!-- These meta tags control how your website appears when shared on Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="{{ request.url }}">
-    <meta property="twitter:title"
-        content="{% block twitter_title %}LinkInDeen - Islamic Golden Age Revival{% endblock %}">
-    <meta property="twitter:description"
-        content="{% block twitter_description %}Discover the wisdom of the Islamic Golden Age. Explore Islamic education, courses, blog posts, and connect with a community dedicated to reviving Islamic knowledge and values.{% endblock %}">
-    <!-- 
-    Twitter Image: This is the image that appears when your website is shared on Twitter
-    - Same image as Open Graph for consistency across platforms
-    - Twitter automatically resizes to fit their card format
-    - summary_large_image shows a large image with title and description below
-    -->
-    <meta property="twitter:image"
-        content="{% block twitter_image %}https://s918.lon1.mysecurecloudhost.com:2083/cpsess1838389083/viewer/home%2flinkinwz%2flinkindeen%2fstatic%2fimages/ogv2.0.png{% endblock %}">
-    <meta property="twitter:image:alt" content="LinkInDeen - Islamic Golden Age Revival">
-    <meta property="twitter:site" content="@LinkInDeen">
-    <meta property="twitter:creator" content="@LinkInDeen">
-
-    <!-- LinkedIn -->
-    <meta property="linkedin:owner" content="linkindeen">
-    <meta property="linkedin:page_id" content="linkindeen">
-
-    <!-- Pinterest -->
-    <meta name="pinterest-rich-pin" content="true">
-
-    <!-- Structured Data / JSON-LD -->
-    <!-- This structured data helps search engines understand your website better -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "{% block schema_type %}Organization{% endblock %}",
-        "name": "LinkInDeen",
-        "url": "{{ request.url_root }}",
-        <!-- 
-        Logo URL: Placeholder.com creates a simple logo with your brand colors
-        - Format: https://via.placeholder.com/WIDTHxHEIGHT/BACKGROUND_COLOR/TEXT_COLOR?text=TEXT
-        - 200x80: logo dimensions (200px wide, 80px tall)
-        - 7dc400: your Islamic green background color
-        - ffffff: white text color
-        - text=LinkInDeen: the text displayed on the logo
-        -->
-        "logo": "https://via.placeholder.com/200x80/7dc400/ffffff?text=LinkInDeen",
-        "description": "Islamic Golden Age Revival - Education, Knowledge, and Community",
-        "foundingDate": "2024",
-        "sameAs": [
-            "https://www.youtube.com/@Anipreneur",
-            "https://twitter.com/LinkInDeen",
-            "https://instagram.com/linkindeen",
-            "https://linkedin.com/company/linkindeen"
-        ],
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "customer service",
-            "email": "contact@linkindeen.com"
-        },
-        "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "LinkInDeen",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://s918.lon1.mysecurecloudhost.com:2083/cpsess1838389083/viewer/home%2flinkinwz%2flinkindeen%2fstatic%2fimages/logo.png"
-            }
-        }
-    }
-    </script>
-
-    <!-- Additional Schema for Blog/Article pages -->
-    {% block additional_schema %}{% endblock %}
-
-    <!-- Favicon and App Icons -->
-    <!-- 
-    Favicon: The small icon that appears in browser tabs, bookmarks, and favorites
-    - Placeholder.com format: https://via.placeholder.com/SIZE/BACKGROUND_COLOR/TEXT_COLOR?text=TEXT
-    - 32x32: 32 pixels wide and tall (standard favicon size)
-    - 7dc400: your Islamic green background color
-    - ffffff: white text color
-    - text=L: displays "L" for LinkInDeen
-    -->
-    <link rel="icon" type="image/x-icon" href="https://s918.lon1.mysecurecloudhost.com:2083/cpsess1838389083/viewer/home%2flinkinwz%2flinkindeen%2fstatic%2fimages/favicon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://s918.lon1.mysecurecloudhost.com:2083/cpsess1838389083/viewer/home%2flinkinwz%2flinkindeen%2fstatic%2fimages/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://s918.lon1.mysecurecloudhost.com:2083/cpsess1838389083/viewer/home%2flinkinwz%2flinkindeen%2fstatic%2fimages/favicon-16x16.png">
-    <!-- 
-    Apple Touch Icon: The icon that appears when users add your website to their iPhone/iPad home screen
-    - 180x180: 180 pixels wide and tall (Apple's recommended size)
-    - Same color scheme as favicon for brand consistency
-    - text=LinkInDeen: displays full brand name
-    -->
-    <link rel="apple-touch-icon" sizes="180x180"
-        href="https://via.placeholder.com/180x180/7dc400/ffffff?text=LinkInDeen">
-    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
-
-    <!-- Preconnect for Performance -->
+<!-- Meta Tags Generated with https://metatags.io -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
