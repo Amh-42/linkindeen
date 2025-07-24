@@ -17,6 +17,14 @@
         margin: 0 auto;
     }
 
+    /* Social grid for courses */
+    .social-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 32px;
+    }
+
     .course-card {
         background: var(--card-bg);
         border: 1px solid var(--border-color);
@@ -54,6 +62,50 @@
         width: 100%;
         max-width: 200px;
         margin: 0 auto;
+    }
+
+    /* Modern button style for course cards */
+    .social-card .btn {
+        background: transparent;
+        border: 2px solid #ffffff;
+        color: #ffffff;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 500;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+        margin-top: auto;
+        width: 100%;
+        max-width: 200px;
+        text-align: center;
+    }
+
+    .social-card .btn:hover {
+        background: #ffffff;
+        color: #000000;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Ensure consistent card heights and button positioning */
+    .social-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        min-height: 280px;
+    }
+
+    .social-card .card-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .social-card .btn-container {
+        margin-top: auto;
+        padding-top: 20px;
     }
 
     /* Course card icon colors */
@@ -94,10 +146,18 @@
         .courses-grid {
             grid-template-columns: repeat(3, 1fr);
         }
+
+        .social-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
     }
 
     @media (max-width: 900px) {
         .courses-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .social-grid {
             grid-template-columns: repeat(2, 1fr);
         }
     }
@@ -106,6 +166,45 @@
         .courses-grid {
             grid-template-columns: 1fr;
             gap: 20px;
+        }
+
+        .social-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .social-card {
+            padding: 20px;
+        }
+
+        .social-card i {
+            font-size: 2.5rem;
+        }
+
+        .social-card h3 {
+            font-size: 1.3rem;
+        }
+
+        .social-card p {
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .social-card {
+            padding: 15px;
+        }
+
+        .social-card i {
+            font-size: 2rem;
+        }
+
+        .social-card h3 {
+            font-size: 1.2rem;
+        }
+
+        .social-card p {
+            font-size: 0.85rem;
         }
     }
 </style>
@@ -126,61 +225,124 @@
 <section id="courses" class="social-links-section">
     <div class="container">
         <h2 data-aos="fade-up">Available <span>Courses</span></h2>
-        <div class="social-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 1fr); gap: 32px;">
+        <div class="social-grid">
             <!-- Mission -->
             <div class="social-card tiktok" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-user"></i>
-                <h3>Mission</span></h3>
-                <p>Learn how to build a mission-centered identity that aligns with your purpose and values.</p>
-                <a href="/coming-soon" class="btn">Enroll Now →</a>
+                <div class="card-content">
+                    <i class="fas fa-user"></i>
+                    <h3>Mission</span></h3>
+                    <p>Learn how to build a mission-centered identity that aligns with your purpose and values.</p>
+                </div>
+                <div class="btn-container"
+                    style="margin-top: auto; padding-top: 20px; display: flex; justify-content: center;">
+                    <a href="/coming-soon" class="enroll-btn"
+                        style="background: transparent; border: 2px solid #ffffff; color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: 500; text-decoration: none; display: inline-block; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); width: 100%; max-width: 200px; text-align: center; margin: 0 auto; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);"
+                        onmouseover="this.style.background='linear-gradient(45deg, #ffffff, #f0f0f0)'; this.style.color='#000000'; this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 8px 25px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2)'; this.style.border='2px solid #ffffff';"
+                        onmouseout="this.style.background='transparent'; this.style.color='#ffffff'; this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(255, 255, 255, 0.1)'; this.style.border='2px solid #ffffff';">Enroll
+                        Now →</a>
+                </div>
             </div>
 
             <!-- Knowledge -->
             <div class="social-card instagram" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-book"></i>
-                <h3>Knowledge </h3>
-                <p>Learn how to build a knowledge system that aligns with your purpose and values.</p>
-                <a href="/coming-soon" class="btn">Enroll Now →</a>
+                <div class="card-content">
+                    <i class="fas fa-book"></i>
+                    <h3>Knowledge </h3>
+                    <p>Learn how to build a knowledge system that aligns with your purpose and values.</p>
+                </div>
+                <div class="btn-container"
+                    style="margin-top: auto; padding-top: 20px; display: flex; justify-content: center;">
+                    <a href="/coming-soon" class="enroll-btn"
+                        style="background: transparent; border: 2px solid #ffffff; color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: 500; text-decoration: none; display: inline-block; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); width: 100%; max-width: 200px; text-align: center; margin: 0 auto; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);"
+                        onmouseover="this.style.background='linear-gradient(45deg, #ffffff, #f0f0f0)'; this.style.color='#000000'; this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 8px 25px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2)'; this.style.border='2px solid #ffffff';"
+                        onmouseout="this.style.background='transparent'; this.style.color='#ffffff'; this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(255, 255, 255, 0.1)'; this.style.border='2px solid #ffffff';">Enroll
+                        Now →</a>
+                </div>
             </div>
 
             <!-- Spirit -->
             <div class="social-card telegram" data-aos="fade-up" data-aos-delay="300">
-                <i class="fas fa-heart"></i>
-                <h3>Spirit </h3>
-                <p>Learn how to build a spirit system that aligns with your purpose and values.</p>
-                <a href="/coming-soon" class="btn">Enroll Now →</a>
+                <div class="card-content">
+                    <i class="fas fa-heart"></i>
+                    <h3>Spirit </h3>
+                    <p>Learn how to build a spirit system that aligns with your purpose and values.</p>
+                </div>
+                <div class="btn-container"
+                    style="margin-top: auto; padding-top: 20px; display: flex; justify-content: center;">
+                    <a href="/coming-soon" class="enroll-btn"
+                        style="background: transparent; border: 2px solid #ffffff; color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: 500; text-decoration: none; display: inline-block; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); width: 100%; max-width: 200px; text-align: center; margin: 0 auto; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);"
+                        onmouseover="this.style.background='linear-gradient(45deg, #ffffff, #f0f0f0)'; this.style.color='#000000'; this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 8px 25px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2)'; this.style.border='2px solid #ffffff';"
+                        onmouseout="this.style.background='transparent'; this.style.color='#ffffff'; this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(255, 255, 255, 0.1)'; this.style.border='2px solid #ffffff';">Enroll
+                        Now →</a>
+                </div>
             </div>
 
             <!-- Brotherhood -->
             <div class="social-card telegram" data-aos="fade-up" data-aos-delay="400">
-                <i class="fas fa-users"></i>
-                <h3>Brotherhood </h3>
-                <p>Learn how to build a brotherhood system that aligns with your purpose and values.</p>
-                <a href="/coming-soon" class="btn">Enroll Now →</a>
+                <div class="card-content">
+                    <i class="fas fa-users"></i>
+                    <h3>Brotherhood </h3>
+                    <p>Learn how to build a brotherhood system that aligns with your purpose and values.</p>
+                </div>
+                <div class="btn-container"
+                    style="margin-top: auto; padding-top: 20px; display: flex; justify-content: center;">
+                    <a href="/coming-soon" class="enroll-btn"
+                        style="background: transparent; border: 2px solid #ffffff; color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: 500; text-decoration: none; display: inline-block; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); width: 100%; max-width: 200px; text-align: center; margin: 0 auto; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);"
+                        onmouseover="this.style.background='linear-gradient(45deg, #ffffff, #f0f0f0)'; this.style.color='#000000'; this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 8px 25px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2)'; this.style.border='2px solid #ffffff';"
+                        onmouseout="this.style.background='transparent'; this.style.color='#ffffff'; this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(255, 255, 255, 0.1)'; this.style.border='2px solid #ffffff';">Enroll
+                        Now →</a>
+                </div>
             </div>
 
             <!-- Leadership -->
             <div class="social-card youtube" data-aos="fade-up" data-aos-delay="500">
-                <i class="fas fa-crown"></i>
-                <h3>Leadership</h3>
-                <p>Learn how to build a leadership system that aligns with your purpose and values.</p>
-                <a href="/coming-soon" class="btn">Enroll Now →</a>
+                <div class="card-content">
+                    <i class="fas fa-crown"></i>
+                    <h3>Leadership</h3>
+                    <p>Learn how to build a leadership system that aligns with your purpose and values.</p>
+                </div>
+                <div class="btn-container"
+                    style="margin-top: auto; padding-top: 20px; display: flex; justify-content: center;">
+                    <a href="/coming-soon" class="enroll-btn"
+                        style="background: transparent; border: 2px solid #ffffff; color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: 500; text-decoration: none; display: inline-block; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); width: 100%; max-width: 200px; text-align: center; margin: 0 auto; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);"
+                        onmouseover="this.style.background='linear-gradient(45deg, #ffffff, #f0f0f0)'; this.style.color='#000000'; this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 8px 25px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2)'; this.style.border='2px solid #ffffff';"
+                        onmouseout="this.style.background='transparent'; this.style.color='#ffffff'; this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(255, 255, 255, 0.1)'; this.style.border='2px solid #ffffff';">Enroll
+                        Now →</a>
+                </div>
             </div>
 
             <!-- Finances -->
             <div class="social-card twitter" data-aos="fade-up" data-aos-delay="600">
-                <i class="fas fa-money-bill"></i>
-                <h3>Finances</h3>
-                <p>Learn how to build a finances system that aligns with your purpose and values.</p>
-                <a href="/coming-soon" class="btn">Enroll Now →</a>
+                <div class="card-content">
+                    <i class="fas fa-money-bill"></i>
+                    <h3>Finances</h3>
+                    <p>Learn how to build a finances system that aligns with your purpose and values.</p>
+                </div>
+                <div class="btn-container"
+                    style="margin-top: auto; padding-top: 20px; display: flex; justify-content: center;">
+                    <a href="/coming-soon" class="enroll-btn"
+                        style="background: transparent; border: 2px solid #ffffff; color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: 500; text-decoration: none; display: inline-block; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); width: 100%; max-width: 200px; text-align: center; margin: 0 auto; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);"
+                        onmouseover="this.style.background='linear-gradient(45deg, #ffffff, #f0f0f0)'; this.style.color='#000000'; this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 8px 25px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2)'; this.style.border='2px solid #ffffff';"
+                        onmouseout="this.style.background='transparent'; this.style.color='#ffffff'; this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(255, 255, 255, 0.1)'; this.style.border='2px solid #ffffff';">Enroll
+                        Now →</a>
+                </div>
             </div>
 
             <!-- Civilization -->
             <div class="social-card whatsapp" data-aos="fade-up" data-aos-delay="700">
-                <i class="fas fa-globe"></i>
-                <h3>Civilization</h3>
-                <p>Learn how to build a civilization system that aligns with your purpose and values.</p>
-                <a href="/coming-soon" class="btn">Enroll Now →</a>
+                <div class="card-content">
+                    <i class="fas fa-globe"></i>
+                    <h3>Civilization</h3>
+                    <p>Learn how to build a civilization system that aligns with your purpose and values.</p>
+                </div>
+                <div class="btn-container"
+                    style="margin-top: auto; padding-top: 20px; display: flex; justify-content: center;">
+                    <a href="/coming-soon" class="enroll-btn"
+                        style="background: transparent; border: 2px solid #ffffff; color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: 500; text-decoration: none; display: inline-block; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); width: 100%; max-width: 200px; text-align: center; margin: 0 auto; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);"
+                        onmouseover="this.style.background='linear-gradient(45deg, #ffffff, #f0f0f0)'; this.style.color='#000000'; this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 8px 25px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2)'; this.style.border='2px solid #ffffff';"
+                        onmouseout="this.style.background='transparent'; this.style.color='#ffffff'; this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(255, 255, 255, 0.1)'; this.style.border='2px solid #ffffff';">Enroll
+                        Now →</a>
+                </div>
             </div>
 
             <!-- Placeholder for 8th card -->
