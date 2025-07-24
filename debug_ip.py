@@ -103,5 +103,5 @@ def home():
 
 if __name__ == '__main__':
     print("🔍 IP Debug Server Starting...")
-    print("Visit http://localhost:5000/debug-ip to see your IP information")
-    app.run(debug=True, host='0.0.0.0', port=5000) 
+    print("Visit http://localhost:5050/debug-ip to see your IP information")
+    app.run(debug=True, host='0.0.0.0', port=5050) 
