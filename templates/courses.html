@@ -11,9 +11,9 @@
 
     .courses-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(4, 1fr);
         gap: 30px;
-        max-width: 1000px;
+        max-width: 1200px;
         margin: 0 auto;
     }
 
@@ -85,8 +85,24 @@
         color: #1a3d2a;
     }
 
+    .course-card:nth-child(8) i {
+        color: #0f2418;
+    }
+
     /* Responsive Design */
-    @media (max-width: 768px) {
+    @media (max-width: 1200px) {
+        .courses-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (max-width: 900px) {
+        .courses-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
         .courses-grid {
             grid-template-columns: 1fr;
             gap: 20px;
@@ -99,7 +115,7 @@
 <!-- HERO SECTION -->
 <section class="hero" id="home">
     <div class="hero-content" data-aos="fade-in" data-aos-delay="200">
-        <h1>Islamic <span>Courses</span></h1>
+        <h1>Golden Age <span>2.0</span></h1>
         <p>Discover comprehensive courses designed to deepen your understanding of Islamic knowledge, entrepreneurship,
             and personal development. Master the principles that built civilizations.</p>
         <a href="#courses" class="btn">Explore Courses <i class="fas fa-arrow-down"></i></a>
@@ -107,72 +123,68 @@
 </section>
 
 <!-- COURSES SECTION -->
-<section id="courses" class="courses-section">
+<section id="courses" class="social-links-section">
     <div class="container">
         <h2 data-aos="fade-up">Available <span>Courses</span></h2>
-        <div class="courses-grid">
-            <!-- Course Card 1 -->
-            <div class="course-card" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-book-open"></i>
-                <h3>Islamic Fundamentals</h3>
-                <p>Master the core principles and foundations of Islamic knowledge and practice. Build a strong
-                    foundation for your spiritual journey.</p>
-                <a href="{{ url_for('coming_soon') }}" class="btn">Coming Soon</a>
+        <div class="social-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 1fr); gap: 32px;">
+            <!-- Mission -->
+            <div class="social-card tiktok" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-user"></i>
+                <h3>Mission</span></h3>
+                <p>Learn how to build a mission-centered identity that aligns with your purpose and values.</p>
+                <a href="/coming-soon" class="btn">Enroll Now →</a>
             </div>
 
-            <!-- Course Card 2 -->
-            <div class="course-card" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-chart-line"></i>
-                <h3>Islamic Entrepreneurship</h3>
-                <p>Learn how to build successful businesses while maintaining Islamic values and ethics. Create wealth
-                    through halal means.</p>
-                <a href="{{ url_for('coming_soon') }}" class="btn">Coming Soon</a>
+            <!-- Knowledge -->
+            <div class="social-card instagram" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-book"></i>
+                <h3>Knowledge </h3>
+                <p>Learn how to build a knowledge system that aligns with your purpose and values.</p>
+                <a href="/coming-soon" class="btn">Enroll Now →</a>
             </div>
 
-            <!-- Course Card 3 -->
-            <div class="course-card" data-aos="fade-up" data-aos-delay="300">
-                <i class="fas fa-users"></i>
-                <h3>Community Leadership</h3>
-                <p>Develop leadership skills to serve and strengthen your local Islamic community. Lead with wisdom and
-                    compassion.</p>
-                <a href="{{ url_for('coming_soon') }}" class="btn">Coming Soon</a>
-            </div>
-
-            <!-- Course Card 4 -->
-            <div class="course-card" data-aos="fade-up" data-aos-delay="400">
+            <!-- Spirit -->
+            <div class="social-card telegram" data-aos="fade-up" data-aos-delay="300">
                 <i class="fas fa-heart"></i>
-                <h3>Spiritual Development</h3>
-                <p>Deepen your spiritual connection and strengthen your relationship with Allah. Transform your inner
-                    self.</p>
-                <a href="{{ url_for('coming_soon') }}" class="btn">Coming Soon</a>
+                <h3>Spirit </h3>
+                <p>Learn how to build a spirit system that aligns with your purpose and values.</p>
+                <a href="/coming-soon" class="btn">Enroll Now →</a>
             </div>
 
-            <!-- Course Card 5 -->
-            <div class="course-card" data-aos="fade-up" data-aos-delay="500">
-                <i class="fas fa-graduation-cap"></i>
-                <h3>Islamic Finance</h3>
-                <p>Understand Islamic banking, investment principles, and halal financial planning. Manage wealth
-                    responsibly.</p>
-                <a href="{{ url_for('coming_soon') }}" class="btn">Coming Soon</a>
+            <!-- Brotherhood -->
+            <div class="social-card telegram" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-users"></i>
+                <h3>Brotherhood </h3>
+                <p>Learn how to build a brotherhood system that aligns with your purpose and values.</p>
+                <a href="/coming-soon" class="btn">Enroll Now →</a>
             </div>
 
-            <!-- Course Card 6 -->
-            <div class="course-card" data-aos="fade-up" data-aos-delay="600">
-                <i class="fas fa-palette"></i>
-                <h3>Islamic Art & Culture</h3>
-                <p>Explore the rich heritage of Islamic art, architecture, and cultural traditions. Appreciate beauty in
-                    Islamic expression.</p>
-                <a href="{{ url_for('coming_soon') }}" class="btn">Coming Soon</a>
+            <!-- Leadership -->
+            <div class="social-card youtube" data-aos="fade-up" data-aos-delay="500">
+                <i class="fas fa-crown"></i>
+                <h3>Leadership</h3>
+                <p>Learn how to build a leadership system that aligns with your purpose and values.</p>
+                <a href="/coming-soon" class="btn">Enroll Now →</a>
             </div>
 
-            <!-- Course Card 7 -->
-            <div class="course-card" data-aos="fade-up" data-aos-delay="700">
-                <i class="fas fa-lightbulb"></i>
-                <h3>Innovation & Technology</h3>
-                <p>Learn how to leverage technology for Islamic education and community building. Bridge tradition with
-                    modernity.</p>
-                <a href="{{ url_for('coming_soon') }}" class="btn">Coming Soon</a>
+            <!-- Finances -->
+            <div class="social-card twitter" data-aos="fade-up" data-aos-delay="600">
+                <i class="fas fa-money-bill"></i>
+                <h3>Finances</h3>
+                <p>Learn how to build a finances system that aligns with your purpose and values.</p>
+                <a href="/coming-soon" class="btn">Enroll Now →</a>
             </div>
+
+            <!-- Civilization -->
+            <div class="social-card whatsapp" data-aos="fade-up" data-aos-delay="700">
+                <i class="fas fa-globe"></i>
+                <h3>Civilization</h3>
+                <p>Learn how to build a civilization system that aligns with your purpose and values.</p>
+                <a href="/coming-soon" class="btn">Enroll Now →</a>
+            </div>
+
+            <!-- Placeholder for 8th card -->
+            <div class="social-card" style="visibility: hidden;"></div>
         </div>
     </div>
 </section>
