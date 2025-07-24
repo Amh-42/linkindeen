@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Admin Access Management Utility for Anipreneur
+Admin Access Management Utility for LinkinDeen
 
 This script helps you manage IP-based access control for the admin panel.
 """
@@ -87,7 +87,7 @@ def remove_ip_from_whitelist(ip_address):
 
 def show_help():
     """Display help information"""
-    print("🔒 Anipreneur Admin Access Management")
+    print("🔒 LinkinDeen Admin Access Management")
     print("=" * 50)
     print()
     print("Usage:")

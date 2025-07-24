@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Anipreneur admin panel is protected by IP-based access control to ensure only authorized devices can access sensitive administrative functions. This adds an additional layer of security beyond username/password authentication.
+The LinkinDeen admin panel is protected by IP-based access control to ensure only authorized devices can access sensitive administrative functions. This adds an additional layer of security beyond username/password authentication.
 
 ## How It Works
 

@@ -16,7 +16,7 @@ app.config['DEBUG'] = True
 
 
 # Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///anipreneur.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///LinkinDeen.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize extensions
@@ -348,7 +348,7 @@ def init_db():
         if not admin:
             admin = User(
                 username='admin',
-                email='admin@anipreneur.com',
+                email='admin@thelinkindeen.com',
                 is_admin=True,
                 is_approved=True  # Main admin is automatically approved
             )

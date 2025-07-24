@@ -1,4 +1,4 @@
-# 🚀 Anipreneur Flask App - cPanel Deployment Troubleshooting
+# 🚀 LinkinDeen Flask App - cPanel Deployment Troubleshooting
 
 ## ❌ Common Issues & Solutions
 

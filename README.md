@@ -1,4 +1,4 @@
-# Anipreneur - Flask App
+# LinkinDeen - Flask App
 
 A Flask web application that teaches business strategies inspired by anime power systems.
 
@@ -25,7 +25,7 @@ python app.py
 ## Project Structure
 
 ```
-anipreneur/
+LinkinDeen/
 ├── app.py              # Main Flask application
 ├── requirements.txt    # Python dependencies
 ├── templates/          # HTML templates

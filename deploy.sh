@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "🚀 Anipreneur Flask App Deployment Script"
+echo "🚀 LinkinDeen Flask App Deployment Script"
 echo "=========================================="
 
 # Check if we're in the right directory
@@ -41,11 +41,11 @@ cat > ../public_html/index.html << 'EOF'
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Anipreneur - Loading...</title>
+    <title>LinkinDeen - Loading...</title>
     <meta http-equiv="refresh" content="0;url=/">
 </head>
 <body>
-    <h1>Anipreneur Flask App</h1>
+    <h1>LinkinDeen Flask App</h1>
     <p>If you're seeing this, the Flask app is loading...</p>
     <p>If the page doesn't redirect automatically, <a href="/">click here</a>.</p>
 </body>

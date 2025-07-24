@@ -1,4 +1,4 @@
-# cPanel Deployment Guide for Anipreneur Flask App
+# cPanel Deployment Guide for LinkinDeen Flask App
 
 ## Prerequisites
 - cPanel hosting with Python support
@@ -68,13 +68,13 @@ pip install -r requirements.txt
 ### Update passenger_wsgi.py
 Make sure the Python path matches your virtual environment:
 ```python
-INTERP = os.path.expanduser("/home/YOUR_CPANEL_USERNAME/virtualenv/anipreneur/3.9/bin/python")
+INTERP = os.path.expanduser("/home/YOUR_CPANEL_USERNAME/virtualenv/LinkinDeen/3.9/bin/python")
 ```
 
 ### Update .htaccess
 Ensure the paths are correct:
 ```apache
-PassengerPython /home/YOUR_CPANEL_USERNAME/virtualenv/anipreneur/3.9/bin/python
+PassengerPython /home/YOUR_CPANEL_USERNAME/virtualenv/LinkinDeen/3.9/bin/python
 PassengerAppRoot /home/YOUR_CPANEL_USERNAME/public_html
 ```
 
