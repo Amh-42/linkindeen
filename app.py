@@ -13,7 +13,8 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'your-secret-key-change-
 app.config['FLASK_ENV'] = os.environ.get('FLASK_ENV', 'production')
 app.config['DEBUG'] = True
 
-
+# Secure admin path - change this to a random string for production
+ADMIN_PATH = os.environ.get('ADMIN_PATH', 'x7k9m2n4p8q1r3s5t6u9v2w4x6y8z0a1b3c5d7e9f1g3h5i7j9k1l3m5n7p9q1r3s5t7u9v1w3x5y7z9a1b3c5d7e9f1g3h5i7j9k1l3m5n7p9q1r3s5t7u9v1w3x5y7z9')
 
 # Database configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///LinkinDeen.db')
@@ -76,8 +77,8 @@ def detail():
 def mlm():
     return render_template('dissertation.html')
 
-# Admin routes
-@app.route('/admin/login', methods=['GET', 'POST'])
+# Admin routes - using secure path
+@app.route(f'/{ADMIN_PATH}/login', methods=['GET', 'POST'])
 def admin_login():
     if request.method == 'POST':
         username = request.form.get('username')
@@ -97,7 +98,7 @@ def admin_login():
     
     return render_template('admin/login.html')
 
-@app.route('/admin/register', methods=['GET', 'POST'])
+@app.route(f'/{ADMIN_PATH}/register', methods=['GET', 'POST'])
 def admin_register():
     if request.method == 'POST':
         username = request.form.get('username')
@@ -146,14 +147,14 @@ def admin_register():
     
     return render_template('admin/register.html')
 
-@app.route('/admin/logout')
+@app.route(f'/{ADMIN_PATH}/logout')
 @login_required
 def admin_logout():
     logout_user()
     flash('Logged out successfully!', 'success')
     return redirect(url_for('admin_login'))
 
-@app.route('/admin')
+@app.route(f'/{ADMIN_PATH}')
 @login_required
 def admin_dashboard():
     post_count = Post.query.count()
@@ -168,7 +169,7 @@ def admin_dashboard():
                          recent_posts=recent_posts)
 
 # Admin management routes
-@app.route('/admin/users')
+@app.route(f'/{ADMIN_PATH}/users')
 @login_required
 def admin_users():
     if not current_user.is_admin:
@@ -178,7 +179,7 @@ def admin_users():
     users = User.query.order_by(User.created_at.desc()).all()
     return render_template('admin/users.html', users=users)
 
-@app.route('/admin/users/<int:user_id>/approve', methods=['POST'])
+@app.route(f'/{ADMIN_PATH}/users/<int:user_id>/approve', methods=['POST'])
 @login_required
 def approve_user(user_id):
     if not current_user.is_admin:
@@ -192,7 +193,7 @@ def approve_user(user_id):
     flash(f'User {user.username} has been approved.', 'success')
     return redirect(url_for('admin_users'))
 
-@app.route('/admin/users/<int:user_id>/reject', methods=['POST'])
+@app.route(f'/{ADMIN_PATH}/users/<int:user_id>/reject', methods=['POST'])
 @login_required
 def reject_user(user_id):
     if not current_user.is_admin:
@@ -207,13 +208,13 @@ def reject_user(user_id):
     return redirect(url_for('admin_users'))
 
 # Post management
-@app.route('/admin/posts')
+@app.route(f'/{ADMIN_PATH}/posts')
 @login_required
 def admin_posts():
     posts = Post.query.order_by(Post.created_at.desc()).all()
     return render_template('admin/posts.html', posts=posts)
 
-@app.route('/admin/posts/new', methods=['GET', 'POST'])
+@app.route(f'/{ADMIN_PATH}/posts/new', methods=['GET', 'POST'])
 @login_required
 def admin_new_post():
     if request.method == 'POST':
@@ -240,7 +241,7 @@ def admin_new_post():
     
     return render_template('admin/post_form.html')
 
-@app.route('/admin/posts/<int:id>/edit', methods=['GET', 'POST'])
+@app.route(f'/{ADMIN_PATH}/posts/<int:id>/edit', methods=['GET', 'POST'])
 @login_required
 def admin_edit_post(id):
     post = Post.query.get_or_404(id)
@@ -260,7 +261,7 @@ def admin_edit_post(id):
     
     return render_template('admin/post_form.html', post=post)
 
-@app.route('/admin/posts/<int:id>/delete', methods=['GET', 'POST'])
+@app.route(f'/{ADMIN_PATH}/posts/<int:id>/delete', methods=['GET', 'POST'])
 @login_required
 def admin_delete_post(id):
     post = Post.query.get_or_404(id)
@@ -270,13 +271,13 @@ def admin_delete_post(id):
     return redirect(url_for('admin_posts'))
 
 # Page management
-@app.route('/admin/pages')
+@app.route(f'/{ADMIN_PATH}/pages')
 @login_required
 def admin_pages():
     pages = Page.query.order_by(Page.created_at.desc()).all()
     return render_template('admin/pages.html', pages=pages)
 
-@app.route('/admin/pages/new', methods=['GET', 'POST'])
+@app.route(f'/{ADMIN_PATH}/pages/new', methods=['GET', 'POST'])
 @login_required
 def admin_new_page():
     if request.method == 'POST':
@@ -298,7 +299,7 @@ def admin_new_page():
     
     return render_template('admin/page_form.html')
 
-@app.route('/admin/pages/<int:id>/edit', methods=['GET', 'POST'])
+@app.route(f'/{ADMIN_PATH}/pages/<int:id>/edit', methods=['GET', 'POST'])
 @login_required
 def admin_edit_page(id):
     page = Page.query.get_or_404(id)
@@ -316,7 +317,7 @@ def admin_edit_page(id):
     
     return render_template('admin/page_form.html', page=page)
 
-@app.route('/admin/pages/<int:id>/delete', methods=['POST'])
+@app.route(f'/{ADMIN_PATH}/pages/<int:id>/delete', methods=['POST'])
 @login_required
 def admin_delete_page(id):
     page = Page.query.get_or_404(id)
@@ -356,6 +357,7 @@ def init_db():
             db.session.add(admin)
             db.session.commit()
             print("Admin user created: username=admin, password=admin123")
+            print(f"Admin panel accessible at: /{ADMIN_PATH}")
 
 if __name__ == '__main__':
     init_db()
