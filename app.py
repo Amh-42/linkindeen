@@ -224,6 +224,13 @@ def admin_new_post():
         featured_image = request.form.get('featured_image')
         status = request.form.get('status', 'draft')
         
+        # SEO Fields
+        focus_keyword = request.form.get('focus_keyword')
+        meta_description = request.form.get('meta_description')
+        meta_keywords = request.form.get('meta_keywords')
+        secondary_keywords = request.form.get('secondary_keywords')
+        canonical_url = request.form.get('canonical_url')
+        
         post = Post(
             title=title,
             slug=slugify(title),
@@ -231,7 +238,12 @@ def admin_new_post():
             excerpt=excerpt,
             featured_image=featured_image,
             status=status,
-            author_id=current_user.id
+            author_id=current_user.id,
+            focus_keyword=focus_keyword,
+            meta_description=meta_description,
+            meta_keywords=meta_keywords,
+            secondary_keywords=secondary_keywords,
+            canonical_url=canonical_url
         )
         
         db.session.add(post)
@@ -254,6 +266,13 @@ def admin_edit_post(id):
         post.featured_image = request.form.get('featured_image')
         post.status = request.form.get('status', 'draft')
         post.updated_at = datetime.utcnow()
+        
+        # SEO Fields
+        post.focus_keyword = request.form.get('focus_keyword')
+        post.meta_description = request.form.get('meta_description')
+        post.meta_keywords = request.form.get('meta_keywords')
+        post.secondary_keywords = request.form.get('secondary_keywords')
+        post.canonical_url = request.form.get('canonical_url')
         
         db.session.commit()
         flash('Post updated successfully!', 'success')
@@ -285,11 +304,23 @@ def admin_new_page():
         content = request.form.get('content')
         status = request.form.get('status', 'draft')
         
+        # SEO Fields
+        focus_keyword = request.form.get('focus_keyword')
+        meta_description = request.form.get('meta_description')
+        meta_keywords = request.form.get('meta_keywords')
+        secondary_keywords = request.form.get('secondary_keywords')
+        canonical_url = request.form.get('canonical_url')
+        
         page = Page(
             title=title,
             slug=slugify(title),
             content=content,
-            status=status
+            status=status,
+            focus_keyword=focus_keyword,
+            meta_description=meta_description,
+            meta_keywords=meta_keywords,
+            secondary_keywords=secondary_keywords,
+            canonical_url=canonical_url
         )
         
         db.session.add(page)
@@ -310,6 +341,13 @@ def admin_edit_page(id):
         page.content = request.form.get('content')
         page.status = request.form.get('status', 'draft')
         page.updated_at = datetime.utcnow()
+        
+        # SEO Fields
+        page.focus_keyword = request.form.get('focus_keyword')
+        page.meta_description = request.form.get('meta_description')
+        page.meta_keywords = request.form.get('meta_keywords')
+        page.secondary_keywords = request.form.get('secondary_keywords')
+        page.canonical_url = request.form.get('canonical_url')
         
         db.session.commit()
         flash('Page updated successfully!', 'success')

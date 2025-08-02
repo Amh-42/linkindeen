@@ -32,6 +32,13 @@ class Post(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
+    # SEO Fields
+    focus_keyword = db.Column(db.String(100))
+    meta_description = db.Column(db.Text)
+    meta_keywords = db.Column(db.String(255))
+    secondary_keywords = db.Column(db.Text)
+    canonical_url = db.Column(db.String(255))
+    
     author = db.relationship('User', backref=db.backref('posts', lazy=True))
 
 class Page(db.Model):
@@ -42,6 +49,13 @@ class Page(db.Model):
     status = db.Column(db.String(20), default='draft')  # draft, published
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    
+    # SEO Fields for Pages too
+    focus_keyword = db.Column(db.String(100))
+    meta_description = db.Column(db.Text)
+    meta_keywords = db.Column(db.String(255))
+    secondary_keywords = db.Column(db.Text)
+    canonical_url = db.Column(db.String(255))
 
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
