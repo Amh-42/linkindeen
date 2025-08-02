@@ -93,14 +93,14 @@ line-height: 1.6;
 }
 
 /* BLOG GRID */
-.blog-grid {
+.news-grid {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 gap: 30px;
 margin-top: 50px;
 }
 
-.blog-card {
+.news-card {
 background: var(--card-bg);
 border: 1px solid var(--border-color);
 border-radius: 15px;
@@ -108,18 +108,18 @@ padding: 30px;
 transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.blog-card:hover {
+.news-card:hover {
 transform: translateY(-5px);
 box-shadow: 0 15px 30px rgba(0, 191, 255, 0.2);
 }
 
-.blog-card h3 {
+.news-card h3 {
 font-size: 1.2rem;
 margin-bottom: 15px;
 color: var(--text-color);
 }
 
-.blog-card p {
+.news-card p {
 color: var(--text-secondary);
 line-height: 1.6;
 margin-bottom: 20px;
@@ -165,7 +165,7 @@ margin-right: auto;
 grid-template-columns: 1fr;
 }
 
-.blog-grid {
+.news-grid {
 grid-template-columns: 1fr;
 }
 }
@@ -316,23 +316,23 @@ grid-template-columns: 1fr;
 
 
 <!-- BLOG/INSIGHTS TEASER -->
-<section id="blog" class="container">
+<section id="news" class="container">
     <h2 data-aos="fade-up">Golden Age <span>Insights</span></h2>
-    <div class="blog-grid">
-        <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
+    <div class="news-grid">
+        <div class="news-card" data-aos="fade-up" data-aos-delay="100">
             <h3>[Coming Soon] The House of Wisdom: Building Knowledge Systems</h3>
             <p>How the Golden Age scholars created the most advanced knowledge infrastructure in history.</p><a
-                href="{{ url_for('blog') }}" class="read-more">Read More →</a>
+                href="{{ url_for('news') }}" class="read-more">Read More →</a>
         </div>
-        <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="news-card" data-aos="fade-up" data-aos-delay="200">
             <h3>[Coming Soon] The Silk Road Economy: Wealth Creation Principles</h3>
             <p>How Islamic merchants built the most prosperous trading network and what we can learn today.</p><a
-                href="{{ url_for('blog') }}" class="read-more">Read More →</a>
+                href="{{ url_for('news') }}" class="read-more">Read More →</a>
         </div>
-        <div class="blog-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="news-card" data-aos="fade-up" data-aos-delay="300">
             <h3>[Coming Soon] The Caliphate Model: Leadership Excellence</h3>
             <p>Lessons from the most successful leaders of the Golden Age on governance and nation-building.</p><a
-                href="{{ url_for('blog') }}" class="read-more">Read More →</a>
+                href="{{ url_for('news') }}" class="read-more">Read More →</a>
         </div>
     </div>
 </section>

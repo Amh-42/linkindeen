@@ -56,14 +56,14 @@ def courses():
 def coming_soon():
     return render_template('coming_soon.html')
 
-@app.route('/blog')
-def blog():
+@app.route('/news')
+def news():
     page = request.args.get('page', 1, type=int)
     posts = Post.query.filter_by(status='published').order_by(Post.created_at.desc()).paginate(
         page=page, per_page=6, error_out=False)
-    return render_template('blog.html', posts=posts)
+    return render_template('news.html', posts=posts)
 
-@app.route('/blog/<slug>')
+@app.route('/news/<slug>')
 def post_detail(slug):
     post = Post.query.filter_by(slug=slug, status='published').first_or_404()
     return render_template('post_detail.html', post=post)

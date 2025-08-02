@@ -13,6 +13,6 @@ Disallow: /instance/
 Disallow: /venv/
 
 # Allow important pages
-Allow: /blog/
+Allow: /news/
 Allow: /courses/
 Allow: /social_links/ 

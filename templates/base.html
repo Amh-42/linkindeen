@@ -15,7 +15,7 @@
     <meta name="title" content="LinkInDeen - Islamic Golden Age Revival
 " />
     <meta name="description"
-        content="Discover the wisdom of the Islamic Golden Age. Explore Islamic education, courses, blog posts, and connect with a community dedicated to reviving Islamic knowledge and values." />
+        content="Discover the wisdom of the Islamic Golden Age. Explore Islamic education, courses, news posts, and connect with a community dedicated to reviving Islamic knowledge and values." />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -23,7 +23,7 @@
     <meta property="og:title" content="LinkInDeen - Islamic Golden Age Revival
 " />
     <meta property="og:description"
-        content="Discover the wisdom of the Islamic Golden Age. Explore Islamic education, courses, blog posts, and connect with a community dedicated to reviving Islamic knowledge and values." />
+        content="Discover the wisdom of the Islamic Golden Age. Explore Islamic education, courses, news posts, and connect with a community dedicated to reviving Islamic knowledge and values." />
     <meta property="og:image" content="{{ url_for('static', filename='images/ogv2.0.png') }}" />
 
     <!-- X (Twitter) -->
@@ -32,7 +32,7 @@
     <meta property="twitter:title" content="LinkInDeen - Islamic Golden Age Revival
 " />
     <meta property="twitter:description"
-        content="Discover the wisdom of the Islamic Golden Age. Explore Islamic education, courses, blog posts, and connect with a community dedicated to reviving Islamic knowledge and values." />
+        content="Discover the wisdom of the Islamic Golden Age. Explore Islamic education, courses, news posts, and connect with a community dedicated to reviving Islamic knowledge and values." />
     <meta property="twitter:image" content="{{ url_for('static', filename='images/ogv2.0.png') }}" />
 
     <!-- Meta Tags Generated with https://metatags.io -->
@@ -505,7 +505,7 @@
 
         /* Card shimmer effects - rebuilt from ground up */
         .video-card,
-        .blog-card,
+        .news-card,
         .social-card,
         .cta-section {
             position: relative;
@@ -513,7 +513,7 @@
         }
 
         .video-card::before,
-        .blog-card::before,
+        .news-card::before,
         .social-card::before,
         .cta-section::before {
             content: '';
@@ -529,7 +529,7 @@
         }
 
         .video-card:hover::before,
-        .blog-card:hover::before,
+        .news-card:hover::before,
         .social-card:hover::before,
         .cta-section:hover::before {
             left: 100%;
@@ -604,14 +604,14 @@
         }
 
         /* BLOG GRID */
-        .blog-grid {
+        .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
 
-        .blog-card {
+        .news-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 15px;
@@ -622,18 +622,18 @@
 
 
 
-        .blog-card:hover {
+        .news-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(45, 90, 45, 0.2);
         }
 
-        .blog-card h3 {
+        .news-card h3 {
             font-size: 1.2rem;
             margin-bottom: 15px;
             color: var(--text-color);
         }
 
-        .blog-card p {
+        .news-card p {
             color: var(--text-secondary);
             line-height: 1.6;
             margin-bottom: 20px;
@@ -835,7 +835,7 @@
                 grid-template-columns: 1fr;
             }
 
-            .blog-grid {
+            .news-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -990,7 +990,7 @@
         <span class="logo-text">LinkIn<span>Deen</span></span>
     </a>
     <nav class="main-nav">
-        <a href="{{ url_for('blog') }}" class="nav-link">Blog</a>
+        <a href="{{ url_for('news') }}" class="nav-link">News</a>
         <a href="{{ url_for('courses') }}" class="nav-link">Courses</a>
         <a href="{{ url_for('social_links') }}" class="nav-link">Links</a>
         <a href="https://www.youtube.com/@thelinkindeen" target="_blank" class="btn nav-link">Subscribe Now</a>
@@ -1005,7 +1005,7 @@
 
 <!-- Mobile Navigation -->
 <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
-    <a href="{{ url_for('blog') }}" class="nav-link">Blog</a>
+    <a href="{{ url_for('news') }}" class="nav-link">News</a>
     <a href="{{ url_for('courses') }}" class="nav-link">Courses</a>
     <a href="{{ url_for('social_links') }}" class="nav-link">Links</a>
     <a href="https://www.youtube.com/@thelinkindeen" target="_blank" class="btn nav-link">Subscribe Now</a>

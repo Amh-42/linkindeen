@@ -19,7 +19,7 @@ python app.py
 ## Routes
 
 - `/` - Home page
-- `/blog` - Blog post about manipulation vs influence
+- `/news` - News post about manipulation vs influence
 - `/detail` - Business strategies detail page
 
 ## Project Structure
@@ -30,7 +30,7 @@ LinkinDeen/
 ├── requirements.txt    # Python dependencies
 ├── templates/          # HTML templates
 │   ├── index.html
-│   ├── blog.html
+│   ├── news.html
 │   └── detail-page.html
 └── static/            # Static files (CSS, images, JS)
     └── images/

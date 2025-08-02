@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Blog - LinkinDeen{% endblock %}
+{% block title %}News - LinkinDeen{% endblock %}
 
 {% block extra_styles %}
 /* --- BLOG STYLES --- */
@@ -44,7 +44,7 @@ margin-right: auto;
 }
 
 /* BLOG POSTS CONTAINER */
-.blog-container {
+.news-container {
 max-width: 900px;
 margin: 0 auto;
 padding: 50px 20px;
@@ -52,13 +52,13 @@ position: relative;
 z-index: 2;
 }
 
-.blog-grid {
+.news-grid {
 display: grid;
 gap: 30px;
 margin-bottom: 50px;
 }
 
-.blog-card {
+.news-card {
 background: var(--card-bg);
 border-radius: 15px;
 padding: 30px;
@@ -67,56 +67,56 @@ border: 1px solid var(--border-color);
 transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.blog-card:hover {
+.news-card:hover {
 transform: translateY(-5px);
 box-shadow: 0 10px 30px rgba(0, 191, 255, 0.2);
 }
 
-.blog-card h3 {
+.news-card h3 {
 font-size: 1.5rem;
 color: var(--text-color);
 margin-bottom: 15px;
 line-height: 1.3;
 }
 
-.blog-card h3 a {
+.news-card h3 a {
 color: inherit;
 text-decoration: none;
 transition: color 0.3s ease;
 }
 
-.blog-card h3 a:hover {
+.news-card h3 a:hover {
 color: var(--primary-color);
 }
 
-.blog-card h3 a span {
+.news-card h3 a span {
 background: linear-gradient(45deg, var(--secondary-color), var(--accent-yellow));
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 background-clip: text;
 }
 
-.blog-card h3 a strong {
+.news-card h3 a strong {
 color: var(--primary-color);
 font-weight: 700;
 }
 
-.blog-card h3 a em {
+.news-card h3 a em {
 color: var(--accent-yellow);
 font-style: italic;
 }
 
-.blog-meta {
+.news-meta {
 color: var(--text-secondary);
 font-size: 0.9rem;
 margin-bottom: 20px;
 }
 
-.blog-meta span {
+.news-meta span {
 margin: 0 10px;
 }
 
-.blog-featured-image {
+.news-featured-image {
 width: 100%;
 height: 250px;
 margin: 20px 0;
@@ -126,7 +126,7 @@ box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 position: relative;
 }
 
-.blog-featured-image img {
+.news-featured-image img {
 width: 100%;
 height: 100%;
 object-fit: cover;
@@ -134,11 +134,11 @@ object-position: center;
 transition: transform 0.3s ease;
 }
 
-.blog-featured-image:hover img {
+.news-featured-image:hover img {
 transform: scale(1.05);
 }
 
-.blog-excerpt {
+.news-excerpt {
 font-size: 1rem;
 line-height: 1.6;
 color: var(--text-secondary);
@@ -224,24 +224,24 @@ font-size: 2.5rem;
 font-size: 1rem;
 }
 
-.blog-container {
+.news-container {
 padding: 30px 15px;
 }
 
-.blog-card {
+.news-card {
 padding: 25px;
 }
 
-.blog-card h3 {
+.news-card h3 {
 font-size: 1.3rem;
 }
 
-.blog-featured-image {
+.news-featured-image {
 height: 200px;
 margin: 15px 0;
 }
 
-.blog-excerpt {
+.news-excerpt {
 font-size: 0.95rem;
 }
 
@@ -260,24 +260,24 @@ font-size: 2rem;
 font-size: 0.9rem;
 }
 
-.blog-container {
+.news-container {
 padding: 20px 10px;
 }
 
-.blog-card {
+.news-card {
 padding: 20px;
 }
 
-.blog-card h3 {
+.news-card h3 {
 font-size: 1.2rem;
 }
 
-.blog-featured-image {
+.news-featured-image {
 height: 180px;
 margin: 15px 0;
 }
 
-.blog-excerpt {
+.news-excerpt {
 font-size: 0.9rem;
 }
 }
@@ -287,31 +287,30 @@ font-size: 0.9rem;
 <!-- HERO SECTION -->
 <section class="hero">
     <div class="hero-content" data-aos="fade-up">
-        <h1>Anime <span>Insights</span> & Strategies</h1>
-        <p>Deep dives into anime characters, psychological analysis, and actionable life lessons. Discover how your
-            favorite anime can transform your mindset and approach to life.</p>
+        <h1>Golden Age <span>Media</span> & Empire</h1>
+        <p>Your comprehensive source for Golden Age news, insights, strategies, and empire-building knowledge. From historical wisdom to modern applications, discover everything you need to revive the Golden Age spirit.</p>
     </div>
 </section>
 
 <!-- BLOG POSTS SECTION -->
-<div class="blog-container">
+<div class="news-container">
     {% if posts.items %}
-    <div class="blog-grid">
+    <div class="news-grid">
         {% for post in posts.items %}
-        <div class="blog-card" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+        <div class="news-card" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
             <h3><a href="{{ url_for('post_detail', slug=post.slug) }}">{{ post.title | safe }}</a></h3>
-            <div class="blog-meta">
+            <div class="news-meta">
                 <span>By {{ post.author.username }}</span> |
                 <span><i class="fas fa-calendar-alt"></i> {{ post.created_at.strftime('%B %d, %Y') }}</span>
             </div>
 
             {% if post.featured_image %}
-            <div class="blog-featured-image">
+            <div class="news-featured-image">
                 <img src="{{ post.featured_image }}" alt="{{ post.title }}">
             </div>
             {% endif %}
 
-            <div class="blog-excerpt">
+            <div class="news-excerpt">
                 {% if post.excerpt %}
                 {{ post.excerpt | safe }}
                 {% else %}
@@ -328,13 +327,13 @@ font-size: 0.9rem;
     {% if posts.pages > 1 %}
     <div class="pagination" data-aos="fade-up">
         {% if posts.has_prev %}
-        <a href="{{ url_for('blog', page=posts.prev_num) }}" class="btn">← Previous</a>
+        <a href="{{ url_for('news', page=posts.prev_num) }}" class="btn">← Previous</a>
         {% endif %}
 
         <span>Page {{ posts.page }} of {{ posts.pages }}</span>
 
         {% if posts.has_next %}
-        <a href="{{ url_for('blog', page=posts.next_num) }}" class="btn">Next →</a>
+        <a href="{{ url_for('news', page=posts.next_num) }}" class="btn">Next →</a>
         {% endif %}
     </div>
     {% endif %}

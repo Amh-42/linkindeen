@@ -131,7 +131,7 @@ Add verification meta tags for:
 
 ## 📝 Page-Specific SEO Blocks
 
-### For Blog Posts
+### For News Posts
 ```html
 {% block title %}{{ post.title }} - LinkInDeen{% endblock %}
 {% block meta_description %}{{ post.excerpt|truncate(160) }}{% endblock %}
@@ -195,7 +195,7 @@ Add verification meta tags for:
 - Islamic Golden Age
 - Islamic knowledge
 - Islamic courses
-- Islamic blog
+- Islamic news
 - Muslim community
 
 ### Long-tail Keywords
@@ -204,7 +204,7 @@ Add verification meta tags for:
 - Islamic knowledge courses
 - Muslim community platform
 - Islamic values education
-- Islamic wisdom blog
+- Islamic wisdom news
 
 ## 📱 Mobile Optimization
 
@@ -214,7 +214,7 @@ Add verification meta tags for:
 - Fast loading on mobile networks
 
 ### 2. AMP (Accelerated Mobile Pages)
-- Consider implementing AMP for blog posts
+- Consider implementing AMP for news posts
 - Improve mobile search rankings
 
 ## 🌐 International SEO
@@ -231,7 +231,7 @@ Add verification meta tags for:
 
 ## 📈 Content Strategy
 
-### 1. Blog Content
+### 1. News Content
 - Regular Islamic education articles
 - Golden Age history posts
 - Community engagement content

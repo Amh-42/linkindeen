@@ -34,7 +34,7 @@
 ## Testing
 - [ ] Visit your domain
 - [ ] Test home page: `/`
-- [ ] Test blog page: `/blog`
+- [ ] Test news page: `/news`
 - [ ] Test detail page: `/detail`
 - [ ] Test 404 page: `/nonexistent`
 - [ ] Check static files load correctly

@@ -95,7 +95,7 @@ chmod -R 755 public_html/static
 1. Visit your domain: `https://yourdomain.com`
 2. Test all routes:
    - Home: `/`
-   - Blog: `/blog`
+   - News: `/news`
    - Detail: `/detail`
 
 ## Troubleshooting
